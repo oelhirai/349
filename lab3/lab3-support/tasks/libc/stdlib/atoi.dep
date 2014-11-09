@@ -1,0 +1,11 @@
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/stdlib/atoi.o:  \
+ /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/stdlib/atoi.c \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/stdlib.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/ctype.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/inline.h
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/stdlib.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/ctype.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/inline.h:

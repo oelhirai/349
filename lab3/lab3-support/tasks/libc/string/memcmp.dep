@@ -1,0 +1,11 @@
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/string/memcmp.o:  \
+ /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/string/memcmp.c \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/string.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/sys/types.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/types.h
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/string.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/sys/types.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/types.h:

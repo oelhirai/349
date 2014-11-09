@@ -14,4 +14,5 @@
 	.file "exit.S"
 
 FUNC(exit)
-	@ Add code here.  Put your name at the top.
+	mov	r0, #42
+	swi	EXIT_SWI

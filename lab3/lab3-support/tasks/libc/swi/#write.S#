@@ -9,8 +9,7 @@
  * @date 2008-10-29
  */
 
-#include <asm.h>
-
+#include <asm.
 	.file "write.S"
 
 FUNC(write)

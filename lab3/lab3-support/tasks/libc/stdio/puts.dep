@@ -1,0 +1,23 @@
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/stdio/puts.o:  \
+ /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/stdio/puts.c \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/stdio.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/stdarg.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/sys/types.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/types.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/string.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/unistd.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/fileno.h
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/stdio.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/stdarg.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/sys/types.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/types.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/string.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/unistd.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/fileno.h:

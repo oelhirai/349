@@ -1,0 +1,11 @@
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/arm/reg.o:  \
+ /home/shashwat/Desktop/349/lab3/lab3-support/kernel/arm/reg.c \
+  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/types.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h
+
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/types.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h:

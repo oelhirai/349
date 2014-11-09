@@ -1,0 +1,5 @@
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/start.o:  \
+ /home/shashwat/Desktop/349/lab3/lab3-support/kernel/start.S \
+  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/asm.h
+
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/asm.h:
