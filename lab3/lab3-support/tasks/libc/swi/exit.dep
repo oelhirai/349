@@ -1,5 +1,9 @@
-/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/swi/exit.o:  \
- /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/swi/exit.S \
-  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/asm.h
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/swi/exit.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/swi/exit.S \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/asm.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/bits/swi.h
 
-/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/asm.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/asm.h:
+
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/bits/swi.h:

@@ -10,9 +10,11 @@
  */
 
 #include <asm.h>
+#include <bits/swi.h>
 
 	.file "exit.S"
 
 FUNC(exit)
 	mov	r0, #42
 	swi	EXIT_SWI
+
