@@ -8,7 +8,7 @@
  */
 
 #include <asm.h>
-
+#include "bits/swi.h"
 	.file "time.S"
 
 FUNC(time)
