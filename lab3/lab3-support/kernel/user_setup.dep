@@ -1,3 +1,6 @@
  \
  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/user_setup.o:  \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/user_setup.S
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/user_setup.S \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/swi.h
+
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/swi.h:

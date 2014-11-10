@@ -1,11 +1,12 @@
-/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/string/strpbrk.o:  \
- /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/string/strpbrk.c \
-  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/string.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/sys/types.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/types.h
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/string/strpbrk.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/string/strpbrk.c \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/string.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/sys/types.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/bits/types.h
 
-/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/string.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/string.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/sys/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/sys/types.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/tasks/libc/include/bits/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/tasks/libc/include/bits/types.h:

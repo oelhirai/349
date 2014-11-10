@@ -11,6 +11,8 @@
 @   T -> T
 @   CPSR_SVC = 0x10011 -> CPSR_USER = 0x10000
 
+#include "bits/swi.h"
+
     .extern user_setup_stack_ptr
 
     .file   "user_setup.S"
@@ -37,6 +39,8 @@ user_setup:
     mov     sp, r0
 
     @ go to user program
-    ldr     pc, =0xa2000000
+    mov     lr, pc
+    ldr     pc, =0xa0000000
+    swi     EXIT_SWI
 
     @@@ exit syscall essentially returns through here!

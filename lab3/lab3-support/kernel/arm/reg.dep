@@ -1,11 +1,12 @@
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/arm/reg.o:  \
- /home/shashwat/Desktop/349/lab3/lab3-support/kernel/arm/reg.c \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/types.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/arm/reg.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/arm/reg.c \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/types.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/arm/reg.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/inline.h
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/types.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/arm/reg.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/inline.h:

@@ -23,6 +23,8 @@ exit_handler:
     ldmfd   sp!, {r1}
     msr     cpsr, r1
     ldmfd   sp!, {r1-r12, lr}
+    ldr     r8, =global_data
+    ldr     r8, [r8]
 
     @ Go back into kernel main.
     mov     pc, lr
