@@ -2,7 +2,8 @@
  *
  * @brief time sycall wrapper
  *
- * @author Kartik Subramanian <ksubrama@andrew.cmu.edu>
+ * @author Shashwat Srivastava
+	   Omer Elhiraika
  * @date 2008-10-31
  */
 
@@ -11,4 +12,5 @@
 	.file "time.S"
 
 FUNC(time)
-	@ Add code here.  Put your name at the top.
+	swi  	TIME_SWI
+	mov 	pc, lr
