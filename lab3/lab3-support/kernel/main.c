@@ -38,6 +38,13 @@ typedef enum {FALSE, TRUE} bool;
 #define OSMR0 0xA00000
 #define ICMR 0xD00004
 #define ICLR 0xD00008
+
+// timer period
+#define PERIOD 3250000
+
+#define IC_MASK 0x4000000
+#define OS_MASK 0x1
+
 // Stores how much time has passed since program started
 unsigned long global_time;
 
@@ -78,9 +85,9 @@ int* IRQ_SWI_addr(int initAddr)
   
   /** Wire in the SWI handler. **/
   // Jump offset already incorporates PC offset. Usually 0x10 or 0x14.
-  int jmp_offset = (*((int *) SWI_VECT_ADDR))&(0xFFF);
+  int jmp_offset = (*((int *) initAddr))&(0xFFF);
 
-  return  *(int **)(SWI_VECT_ADDR + PC_OFFSET + jmp_offset);
+  return  *(int **)(initAddr + PC_OFFSET + jmp_offset);
 }
 
 int kmain(int argc, char** argv, uint32_t table)
@@ -142,12 +149,11 @@ int kmain(int argc, char** argv, uint32_t table)
 // Sets up stack pointers
 void IRQ_setup()
 {
-  int mask = 1 << 25;
-  reg_set(OIER, mask);
+  reg_set(OIER, OS_MASK);
   int timeNow = reg_read(OSCR);
-  reg_write(OSMR0, timeNow + 325000);
-  reg_set(ICMR, mask);
-  reg_clear(ICLR, mask);
+  reg_write(OSMR0, timeNow + PERIOD);
+  reg_set(ICMR, IC_MASK);
+  reg_clear(ICLR, IC_MASK);
 }
 
 /* Verifies that the buffer is entirely in valid memory. */
@@ -235,11 +241,9 @@ void C_IRQ_Handler()
 {
   int timeNow = reg_read(OSCR);
   int i;
-  // Use 3250 later
-  reg_write(OSMR0, timeNow + 325000);
+  reg_write(OSMR0, timeNow + PERIOD);
   global_time += 10;
-  int mask = 1 << 25;
-  reg_set(OSSR, mask);
+  reg_set(OSSR, OS_MASK);
   for(i = 0; i < 3; i++)
   {
   	putc('a');

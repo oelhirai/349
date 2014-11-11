@@ -12,7 +12,13 @@
 int main(int argc, char** argv)
 {
 	const char hello[] = "Hello World\r\n";
+	int volatile i = 0;
+	int volatile temp;
 	write(STDOUT_FILENO, hello, sizeof(hello) - 1);
-	while(1);
+	write(STDOUT_FILENO, hello, sizeof(hello) - 1);
+	while(1){
+		temp = 5;
+		i = 7;
+	}
 	return 0;
 }
