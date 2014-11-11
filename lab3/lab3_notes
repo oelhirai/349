@@ -1,0 +1,19 @@
+Lab 3 Notes:
+
+OSCR - 3.25MHz - COunter register.
+OSMR - ex: 3.25 million
+
+(Match Register)
+		whenever OSCR matches Match register, interrupt to update
+		In example, with the osmr set to this value, OSMR, interrupt every second.
+		With this interrupt, handling time and sleep syscalls will be easy.
+
+(The two registers)
+	These two are memory mapped registers.
+	reg.h -> utility functions for reading writing etc. 
+		(volatile handling accounted for in reg.h)
+
+	Will only need one match register (only need single interrupt in the system)
+	Use reg_set to enable certain register. 
+
+	Handling interrupts will differ (cannot disable IRQ, FIQ mode as done in the past)

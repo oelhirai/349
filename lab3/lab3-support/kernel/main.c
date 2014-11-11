@@ -41,6 +41,9 @@ typedef enum {FALSE, TRUE} bool;
 // Stores how much time has passed since program started
 unsigned long global_time;
 
+// Call to irqHandler assembly function
+extern void irqHandler();
+
 // Sets up IRQ stuff
 void IRQ_setup();
 
@@ -70,7 +73,7 @@ int* IRQ_SWI_addr(int initAddr)
 {
   /* Add your code here */
   if (check_vector(initAddr) == FALSE) {
-    return BAD_CODE;
+    return (int*) BAD_CODE;
   }
   
   /** Wire in the SWI handler. **/
@@ -91,6 +94,10 @@ int kmain(int argc, char** argv, uint32_t table)
 	// &S_Handler" in Jump Table.
 	int *swi_handler_addr = IRQ_SWI_addr(SWI_VECT_ADDR);
 	int *irq_handler_addr = IRQ_SWI_addr(IRQ_VECT_ADDR);
+	if (*swi_handler_addr == BAD_CODE || 
+		*irq_handler_addr == BAD_CODE) {
+		return BAD_CODE;
+	}
 
 	// Save original Uboot SWI handler instructions.
 	int swi_instr_1 = *swi_handler_addr;
@@ -138,7 +145,7 @@ void IRQ_setup()
   int mask = 1 << 25;
   reg_set(OIER, mask);
   int timeNow = reg_read(OSCR);
-  reg_write(OSMR0, timeNow + 3250);
+  reg_write(OSMR0, timeNow + 325000);
   reg_set(ICMR, mask);
   reg_clear(ICLR, mask);
 }
@@ -227,12 +234,13 @@ ssize_t read_handler(int fd, void *buf, size_t count) {
 void C_IRQ_Handler()
 {
   int timeNow = reg_read(OSCR);
+  int i;
   // Use 3250 later
   reg_write(OSMR0, timeNow + 325000);
   global_time += 10;
   int mask = 1 << 25;
   reg_set(OSSR, mask);
-  for(int i = 0; i < 3; i++)
+  for(i = 0; i < 3; i++)
   {
   	putc('a');
   	putc('b');
@@ -243,6 +251,7 @@ void C_IRQ_Handler()
 /* C_SWI_Handler uses SWI number to call the appropriate function. */
 int C_SWI_Handler(int swiNum, int *regs) {
 	int count = 0;
+	unsigned long timeNow, timeSleep;
 	switch (swiNum) {
 		// ssize_t read(int fd, void *buf, size_t count);
 		case READ_SWI:
@@ -256,12 +265,14 @@ int C_SWI_Handler(int swiNum, int *regs) {
 		case EXIT_SWI:
 			exit_handler((int) regs[0]); // never returns
 			break;
-	case TIME_SWI: return (int)global_time;
-		         break;
-	case SLEEP_SWI: unsigned long timeNow = global_time;
-	                unsigned long timeSleep = (unsigned long)regs[0];
-	                while(global_time - timeNow < timeSleep);
-	                break;
+	case TIME_SWI: 
+			return (int)global_time;
+		    break;
+	case SLEEP_SWI: 
+			timeNow = global_time;
+	        timeSleep = (unsigned long)regs[0];
+	        while(global_time - timeNow < timeSleep);
+	        break;
 		default:
 			printf("Error in ref C_SWI_Handler: Invalid SWI number.");
 			exit_handler(BAD_CODE); // never returns

@@ -32,9 +32,9 @@ user_setup:
     @ switch mode to IRQ
     @ change sp to 0xA2800000
     mrs     r2, cpsr
-    bic     r2, 0x001
+    bic     r2, #0x001
     msr     cpsr, r2
-    mov     sp, 0xA2800000
+    ldr     sp, =0xA2800000
 	
     @ change mode to USER
     mrs     r2, cpsr

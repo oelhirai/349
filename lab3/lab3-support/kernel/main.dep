@@ -1,41 +1,42 @@
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/main.o:  \
- /home/shashwat/Desktop/349/lab3/lab3-support/kernel/main.c \
-  /home/shashwat/Desktop/349/lab3/lab3-support/uboot/include/exports.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/types.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/stdarg.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/uboot/include/_exports.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/errno.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/fileno.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/swi.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/globals.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/swi_handler.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/user_setup.h \
-  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/exit_handler.h
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/main.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/main.c \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/uboot/include/exports.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/types.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/stdarg.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/uboot/include/_exports.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/errno.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/fileno.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/swi.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/arm/reg.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/inline.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/globals.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/swi_handler.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/user_setup.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/exit_handler.h
 
-/home/shashwat/Desktop/349/lab3/lab3-support/uboot/include/exports.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/uboot/include/exports.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/types.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/stdarg.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/stdarg.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/uboot/include/_exports.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/uboot/include/_exports.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/errno.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/errno.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/fileno.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/fileno.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/swi.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/bits/swi.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/arm/reg.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/include/inline.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/globals.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/globals.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/swi_handler.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/swi_handler.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/user_setup.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/user_setup.h:
 
-/home/shashwat/Desktop/349/lab3/lab3-support/kernel/exit_handler.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab3/lab3-support/kernel/exit_handler.h:
