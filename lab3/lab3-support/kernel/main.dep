@@ -7,6 +7,8 @@
   /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/errno.h \
   /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/fileno.h \
   /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/swi.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h \
+  /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h \
   /home/shashwat/Desktop/349/lab3/lab3-support/kernel/globals.h \
   /home/shashwat/Desktop/349/lab3/lab3-support/kernel/swi_handler.h \
   /home/shashwat/Desktop/349/lab3/lab3-support/kernel/user_setup.h \
@@ -25,6 +27,10 @@
 /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/fileno.h:
 
 /home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/bits/swi.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/arm/reg.h:
+
+/home/shashwat/Desktop/349/lab3/lab3-support/kernel/include/inline.h:
 
 /home/shashwat/Desktop/349/lab3/lab3-support/kernel/globals.h:
 

@@ -4,6 +4,7 @@
 #include <bits/errno.h>
 #include <bits/fileno.h>
 #include <bits/swi.h>
+#include <arm/reg.h>
 
 #include "globals.h"
 #include "swi_handler.h"
@@ -31,8 +32,20 @@ typedef enum {FALSE, TRUE} bool;
 #define SDRAM_START 0xa0000000
 #define SDRAM_END 0xa3ffffff
 
+#define OIER 0xA0001C
+#define OSCR 0xA00010
+#define OSSR 0xA00014
+#define OSMR0 0xA00000
+#define ICMR 0xD00004
+#define ICLR 0xD00008
 // Stores how much time has passed since program started
 unsigned long global_time;
+
+// Sets up IRQ stuff
+void IRQ_setup();
+
+// IRQ handler
+void C_IRQ_Handler();
 
 /* Checks the SWI Vector Table. */
 bool check_vector(int addr) {
@@ -91,7 +104,7 @@ int kmain(int argc, char** argv, uint32_t table)
 	*(swi_handler_addr + 1) = (int) &swi_handler; // New swi handler.
 
 	*irq_handler_addr = 0xe51ff004;
-	*(irq_handler_addr + 1) = (int) &irq_handler;
+	*(irq_handler_addr + 1) = (int) &irqHandler;
 
 	// Copy argc and argv to user stack in the right order.
 	int *spTop = ((int *) USER_STACK_TOP) - 1;
@@ -101,7 +114,9 @@ int kmain(int argc, char** argv, uint32_t table)
 		spTop--;
 	}
 	*spTop = argc;
-
+	
+	/* Setup IRQ values */
+	IRQ_setup();
 
 	/** Jump to user program. **/
 	int usr_prog_status = user_setup(spTop);
@@ -117,6 +132,16 @@ int kmain(int argc, char** argv, uint32_t table)
 	return usr_prog_status;
 }
 
+// Sets up stack pointers
+void IRQ_setup()
+{
+  int mask = 1 << 25;
+  reg_set(OIER, mask);
+  int timeNow = reg_read(OSCR);
+  reg_write(OSMR0, timeNow + 3250);
+  reg_set(ICMR, mask);
+  reg_clear(ICLR, mask);
+}
 
 /* Verifies that the buffer is entirely in valid memory. */
 int check_mem(char *buf, int count, unsigned start, unsigned end) {
@@ -199,6 +224,22 @@ ssize_t read_handler(int fd, void *buf, size_t count) {
 	return i;
 }
 
+void C_IRQ_Handler()
+{
+  int timeNow = reg_read(OSCR);
+  // Use 3250 later
+  reg_write(OSMR0, timeNow + 325000);
+  global_time += 10;
+  int mask = 1 << 25;
+  reg_set(OSSR, mask);
+  for(int i = 0; i < 3; i++)
+  {
+  	putc('a');
+  	putc('b');
+  }
+  putc('\n');
+}
+
 /* C_SWI_Handler uses SWI number to call the appropriate function. */
 int C_SWI_Handler(int swiNum, int *regs) {
 	int count = 0;
@@ -215,7 +256,7 @@ int C_SWI_Handler(int swiNum, int *regs) {
 		case EXIT_SWI:
 			exit_handler((int) regs[0]); // never returns
 			break;
-	        case TIME_SWI: return global_time;
+	case TIME_SWI: return (int)global_time;
 		         break;
 	case SLEEP_SWI: unsigned long timeNow = global_time;
 	                unsigned long timeSleep = (unsigned long)regs[0];

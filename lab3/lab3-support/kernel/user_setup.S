@@ -29,6 +29,13 @@ user_setup:
     ldr     r2, =user_setup_stack_ptr
     str     sp, [r2] @ *user_setup_stack_ptr = sp
 
+    @ switch mode to IRQ
+    @ change sp to 0xA2800000
+    mrs     r2, cpsr
+    bic     r2, 0x001
+    msr     cpsr, r2
+    mov     sp, 0xA2800000
+	
     @ change mode to USER
     mrs     r2, cpsr
     orr     r2, r2, #0x0C0  @ Mask the flag bits.
