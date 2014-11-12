@@ -40,13 +40,13 @@ typedef enum {FALSE, TRUE} bool;
 #define ICLR 0xD00008
 
 // timer period
-#define PERIOD 3250000
+#define PERIOD 32500
 
 #define IC_MASK 0x4000000
 #define OS_MASK 0x1
 
 // Stores how much time has passed since program started
-unsigned long global_time;
+volatile unsigned long global_time;
 
 // Call to irqHandler assembly function
 extern void irqHandler();
@@ -150,7 +150,7 @@ int kmain(int argc, char** argv, uint32_t table)
 void IRQ_setup()
 {
   reg_set(OIER, OS_MASK);
-  int timeNow = reg_read(OSCR);
+  unsigned int timeNow = reg_read(OSCR);
   reg_write(OSMR0, timeNow + PERIOD);
   reg_set(ICMR, IC_MASK);
   reg_clear(ICLR, IC_MASK);
@@ -239,23 +239,25 @@ ssize_t read_handler(int fd, void *buf, size_t count) {
 
 void C_IRQ_Handler()
 {
-  int timeNow = reg_read(OSCR);
-  int i;
-  reg_write(OSMR0, timeNow + PERIOD);
+  volatile unsigned int timeNow = reg_read(OSCR);
+  //int i;
+  reg_write(OSMR0, timeNow + (unsigned int) PERIOD);
   global_time += 10;
   reg_set(OSSR, OS_MASK);
-  for(i = 0; i < 3; i++)
+ /* for(i = 0; i < 3; i++)
   {
   	putc('a');
   	putc('b');
   }
-  putc('\n');
+  putc('\n');*/
 }
 
 /* C_SWI_Handler uses SWI number to call the appropriate function. */
 int C_SWI_Handler(int swiNum, int *regs) {
+				volatile unsigned long timeToReach, timeSleep;
 	int count = 0;
-	unsigned long timeNow, timeSleep;
+
+	//volatile unsigned long timeNow, timeNew, timeSleep;
 	switch (swiNum) {
 		// ssize_t read(int fd, void *buf, size_t count);
 		case READ_SWI:
@@ -270,12 +272,17 @@ int C_SWI_Handler(int swiNum, int *regs) {
 			exit_handler((int) regs[0]); // never returns
 			break;
 	case TIME_SWI: 
-			return (int)global_time;
+			return (unsigned int)global_time;
 		    break;
 	case SLEEP_SWI: 
-			timeNow = global_time;
 	        timeSleep = (unsigned long)regs[0];
-	        while(global_time - timeNow < timeSleep);
+	        volatile int i = 0;
+	        timeToReach = global_time + timeSleep;
+	        while (global_time < timeToReach) {
+	        	// filler insruction
+	        	i++;
+	        	i--;
+	        }
 	        break;
 		default:
 			printf("Error in ref C_SWI_Handler: Invalid SWI number.");

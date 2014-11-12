@@ -39,7 +39,7 @@ user_setup:
     @ change mode to USER
     mrs     r2, cpsr
     #orr     r2, r2, #0x0C0  @ Mask the flag bits.
-    bic     r2, r2, #0x083  @ Change mode bits to user.
+    bic     r2, r2, #0x0C3  @ Change mode bits to user.
     msr     cpsr, r2
 
     @ set up user stack from spTop passed in from kernel.c

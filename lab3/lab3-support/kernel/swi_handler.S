@@ -15,6 +15,11 @@
 swi_handler:
     sub     sp, sp, #4
     stmfd   sp!, {r0-r12, lr}
+    
+    @ unmask interrupt bits to ensure IRQ
+    mrs     r2, cpsr
+    bic     r2, r2, #0x080  @ Mask the flag bits.
+    msr     cpsr, r2
 
     @ get spsr into general purpose (gp) registers
     mrs     r2, spsr
