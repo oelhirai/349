@@ -107,10 +107,8 @@ int kmain(int argc, char** argv, uint32_t table)
 	// Save original Uboot SWI handler instructions.
 	int swi_instr_1 = *swi_handler_addr;
 	int swi_instr_2 = *(swi_handler_addr + 1);
-	printf("lolderferedeference");
 	int irq_instr_1 = *irq_handler_addr;
 	int irq_instr_2 = *(irq_handler_addr + 1);
-	printf("lolderferedeference");
 
 	// Wire in our own: LDR pc, [pc, #-4] = 0xe51ff004
 	*swi_handler_addr = 0xe51ff004;
