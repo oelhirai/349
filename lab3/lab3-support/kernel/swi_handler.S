@@ -16,6 +16,10 @@ swi_handler:
     sub     sp, sp, #4
     stmfd   sp!, {r0-r12, lr}
     
+    @ restore r8, base pointer for uboot API
+    ldr r8, =global_data
+    ldr r8, [r8]
+
     @ unmask interrupt bits to ensure IRQ
     mrs     r2, cpsr
     bic     r2, r2, #0x080  @ Mask the flag bits.

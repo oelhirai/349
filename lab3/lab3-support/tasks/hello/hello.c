@@ -8,9 +8,10 @@
  * @date   2008-10-29
  */
 #include <unistd.h>
+#include <stdio.h>
 
-void convertToStr(unsigned int n, char* str, int count);
-int getSize(int n);
+//void convertToStr(unsigned int n, char* str, int count);
+//int getSize(int n);
 
 int main(int argc, char** argv)
 {
@@ -21,10 +22,13 @@ int main(int argc, char** argv)
 	//int timeNew = 0;
 	write(STDOUT_FILENO, hello, sizeof(hello) - 1);
 	write(STDOUT_FILENO, hello, sizeof(hello) - 1);
-	//printf("%d %d\n", timeNow, timeNew);
+	printf("%d %d\n", 7, 8);
+	printf("2nd printf");
 	uint32_t now = time();
+	//printf("below time");
 
 	sleep(1000);
+	printf("anything below");
 	uint32_t later = time();
 	write(STDOUT_FILENO, hello, sizeof(hello) - 1);
 	sleep(later - now);
@@ -37,29 +41,29 @@ int main(int argc, char** argv)
 	return 0;
 }
 
-int getSize(int n)
-{
-	int count = 0;
-	int n_copy = n;
-	while(n_copy > 0)
-	{
-		count ++;
-		n_copy /= 10;
-	}
-	return count;
-}
+// int getSize(int n)
+// {
+// 	int count = 0;
+// 	int n_copy = n;
+// 	while(n_copy > 0)
+// 	{
+// 		count ++;
+// 		n_copy /= 10;
+// 	}
+// 	return count;
+// }
 
-void convertToStr(unsigned int n, char* ans, int count)
-{
+// void convertToStr(unsigned int n, char* ans, int count)
+// {
 	
-	//char ans[count + 1];
-	int i = 0;
-	for(i = 0; i < count; i ++)
-	{
-		*ans = 48 + (n %10);
-		ans++;
-		n /= 10;
-	}
-	ans[i] = '\0';
-}
+// 	//char ans[count + 1];
+// 	int i = 0;
+// 	for(i = 0; i < count; i ++)
+// 	{
+// 		*ans = 48 + (n %10);
+// 		ans++;
+// 		n /= 10;
+// 	}
+// 	ans[i] = '\0';
+// }
 

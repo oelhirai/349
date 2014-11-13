@@ -15,6 +15,7 @@
 
     .extern user_setup_stack_ptr
 
+
     .file   "user_setup.S"
     .text
 
