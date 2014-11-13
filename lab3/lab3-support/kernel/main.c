@@ -46,6 +46,9 @@ typedef enum {FALSE, TRUE} bool;
 // Stores how much time has passed since program started
 volatile unsigned long global_time;
 
+// This will be used to calculate drift
+volatile unsigned int oldOSCR;
+
 // Call to irqHandler assembly function
 extern void irqHandler();
 
@@ -74,6 +77,10 @@ bool check_vector(int addr) {
 
 uint32_t global_data;
 
+/*
+ * THis function wil take in the initial address and returns the 
+ * the address to be clobbered and replaced with our own instructions
+ */
 int* IRQ_SWI_addr(int initAddr)
 {
   /* Add your code here */
@@ -143,7 +150,10 @@ int kmain(int argc, char** argv, uint32_t table)
 	return usr_prog_status;
 }
 
-// Sets up stack pointers
+/*
+ * Sets up OSMR0, OIER to enable calculating time
+ * Also enable ICLR, ICMR to catch interrupts corresponding OSTimer
+ */
 void IRQ_setup()
 {
   reg_set(OIER, OS_MASK);
@@ -151,6 +161,7 @@ void IRQ_setup()
   reg_write(OSMR0, timeNow + PERIOD);
   reg_set(ICMR, IC_MASK);
   reg_clear(ICLR, IC_MASK);
+  oldOSCR = reg_read(OSCR);
 }
 
 /* Verifies that the buffer is entirely in valid memory. */
@@ -234,19 +245,24 @@ ssize_t read_handler(int fd, void *buf, size_t count) {
 	return i;
 }
 
+/*
+ * Catches IRQ interrupts and increments global time to match current
+ * time since program started running (OSCR)
+ * Also sets new value of OSCMR0 for next interrupt while covering for drift
+ * Clears OSSR register.
+ */
 void C_IRQ_Handler()
 {
   volatile unsigned int timeNow = reg_read(OSCR);
-  //int i;
-  reg_write(OSMR0, timeNow + (unsigned int) PERIOD);
+  unsigned int period = 0;
+  if(oldOSCR + PERIOD < timeNow)
+  {
+  	period = timeNow - oldOSCR - PERIOD;
+  }
+  reg_write(OSMR0, timeNow + ((unsigned int)PERIOD) - period);
   global_time += 10;
   reg_set(OSSR, OS_MASK);
- /* for(i = 0; i < 3; i++)
-  {
-  	putc('a');
-  	putc('b');
-  }
-  putc('\n');*/
+  oldOSCR = reg_read(OSCR);
 }
 
 /* C_SWI_Handler uses SWI number to call the appropriate function. */
@@ -269,16 +285,15 @@ int C_SWI_Handler(int swiNum, int *regs) {
 			exit_handler((int) regs[0]); // never returns
 			break;
 	case TIME_SWI: 
+			// unsigned long time();
 			return (unsigned int)global_time;
 		    break;
 	case SLEEP_SWI: 
+			// void sleep(unsigned long time);
 	        timeSleep = (unsigned long)regs[0];
-	        volatile int i = 0;
+	        //volatile int i = 0;
 	        timeToReach = global_time + timeSleep;
 	        while (global_time < timeToReach) {
-	        	// filler insruction
-	        	i++;
-	        	i--;
 	        }
 	        break;
 		default:
