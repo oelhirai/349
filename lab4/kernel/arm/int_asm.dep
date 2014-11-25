@@ -1,0 +1,9 @@
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/arm/int_asm.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/arm/int_asm.S \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/asm.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/arm/psr.h
+
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/asm.h:
+
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/arm/psr.h:
