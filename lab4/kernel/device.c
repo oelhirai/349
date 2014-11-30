@@ -45,8 +45,12 @@ static dev_t devices[NUM_DEVICES];
  */
 void dev_init(void)
 {
-   /* the following line is to get rid of the warning and should not be needed */	
-   devices[0]=devices[0];
+	int i;
+	for(i = 0; i < NUM_DEVICES; i ++)
+	{
+		devices[i]->sleep_queue = NULL;
+		devices[i]->next_match = dev_freq[i];
+	}
 }
 
 
@@ -56,9 +60,13 @@ void dev_init(void)
  *
  * @param dev  Device number.
  */
-void dev_wait(unsigned int dev __attribute__((unused)))
+void dev_wait(unsigned int dev)
 {
-	
+	dev_t device = devices[dev];
+	tcb_t* prev = device->sleep_queue;
+	tcb_t* currTcb = get_cur_tcb();
+	device->sleep_queue = currTcb;
+	currTcb->sleep_queue = prev;
 }
 
 
@@ -69,8 +77,22 @@ void dev_wait(unsigned int dev __attribute__((unused)))
  * interrupt corresponded to the interrupt frequency of a device, this 
  * function should ensure that the task is made ready to run 
  */
-void dev_update(unsigned long millis __attribute__((unused)))
+void dev_update(unsigned long millis)
 {
-	
+	int i;
+	for(i = 0; i < NUM_DEVICES; i++)
+	{
+		if(millis % dev_freq[i] == 0)
+		{
+			dev_t device = devices[i];
+			tcb_t* task = device->sleep_queue;
+			while(task != NULL)
+			{
+				runqueue_add(task, task->cur_prio);
+				task = task->sleep_queue;
+			}
+			//device->next_match += dev_freq[i];
+		}
+	}
 }
 
