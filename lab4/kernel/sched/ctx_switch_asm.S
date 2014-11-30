@@ -41,7 +41,27 @@ FUNC(launch_task)
 /* r0 points to the target context, r1 to the current context. */
 /* add your code to perform a full context switch */
 FUNC(ctx_switch_full)
+	str		r4, [r1]  /* begin saving r4-r11, sp, lr from current context */
+	add		r1, #32
+	str		r5, [r1]
+	add		r1, #32
+	str		r6, [r1]
+	add		r1, #32
+	str		r7, [r1]
+	add		r1, #32
+	str		r8, [r1]
+	add		r1, #32
+	str		r9, [r1]
+	add		r1, #32
+	str		r10, [r1]
+	add		r1, #32
+	str		r11, [r1]	
+	add		r1, #32
+	str		sp, [r1]	/* pointers assumed to be 32 bit values */
+	add		r1, #32
+	str		lr, [r1]
 
 
 /*add your code to perform a half context switch */	
 FUNC(ctx_switch_half)
+

@@ -18,7 +18,7 @@
 #include <exports.h>
 #endif
 
-static __attribute__((unused)) tcb_t* cur_tcb; /* use this if needed */
+static tcb_t* cur_tcb; /* use this if needed */
 
 /**
  * @brief Initialize the current TCB and priority.
@@ -26,9 +26,9 @@ static __attribute__((unused)) tcb_t* cur_tcb; /* use this if needed */
  * Set the initialization thread's priority to IDLE so that anything
  * will preempt it when dispatching the first task.
  */
-void dispatch_init(tcb_t* idle __attribute__((unused)))
+void dispatch_init(tcb_t* idle)
 {
-	
+	cur_tcb = idle;
 }
 
 
@@ -42,7 +42,17 @@ void dispatch_init(tcb_t* idle __attribute__((unused)))
  */
 void dispatch_save(void)
 {
-	
+	// retrieve the highest priority task
+	uint8_t prio = highest_prio();
+	tcb_t* highest_tcb = runqueue_remove(prio);
+
+	if (prio > cur_tcb->cur_prio) {
+		//add saved task into run queue
+		runqueue_add(cur_tcb, cur_tcb->cur_prio);
+		ctx_switch_full(highest_tcb->context, cur_tcb->context);
+	} else {
+		runqueue_add(highest_tcb, prio);
+	}
 }
 
 /**
@@ -53,7 +63,13 @@ void dispatch_save(void)
  */
 void dispatch_nosave(void)
 {
+	// retrieve the highest priority tashk
+	uint8_t prio = highest_prio();
+	tcb_t* highest_tcb = runqueue_remove(prio);
+	cur_tcb = highest_tcb;
 
+	// set current registers to that of task we're switching to
+	ctx_switch_half(highest_tcb->context);
 }
 
 
@@ -73,7 +89,7 @@ void dispatch_sleep(void)
  */
 uint8_t get_cur_prio(void)
 {
-	return 1; //fix this; dummy return to prevent compiler warning
+	return cur_tcb->cur_prio;
 }
 
 /**
@@ -81,5 +97,5 @@ uint8_t get_cur_prio(void)
  */
 tcb_t* get_cur_tcb(void)
 {
-	return (tcb_t *) 0; //fix this; dummy return to prevent compiler warning
+	return cur_tcb;
 }
