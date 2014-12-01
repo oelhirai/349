@@ -48,8 +48,13 @@ FUNC(irq_wrapper)
 	ldm      r1, {r0, r1}
 	stmfd    sp!, {r0-r3, r8, ip, lr}
 
-	/* Recover user registers and save */
+	/* Recover user registers */
 	mrs      r0, spsr
+
+	@ store spsr below gp registers
+    stmfd   sp!, {r0} @adjusted
+
+    /* Save user registers */
 	stmfd    sp, {r0, sp, lr}^
 	add      sp, sp, #-12
 
@@ -66,7 +71,10 @@ FUNC(irq_wrapper)
 	/* Restore registers.  Also restore CPSR. */
 	ldmfd    sp, {r0, sp, lr}^
 	add      sp, sp, #12
-	msr      spsr, r0
+
+    ldmfd	sp!, {r2}
+    msr     spsr, r2
+
 	ldmfd    sp!, {r0-r3, r8, ip, lr, pc}^
 
 /*
