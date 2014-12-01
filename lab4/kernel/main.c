@@ -13,6 +13,7 @@
 #include <sched.h>
 #include <device.h>
 #include <assert.h>
+
 #include <exports.h>
 #include <bits/errno.h>
 #include <bits/fileno.h>
@@ -57,9 +58,6 @@
 
 // Stores how much time has passed since program started
 volatile unsigned long global_time;
-
-// This will be used to calculate drift
-volatile unsigned int oldOSCR;
 
 // Call to irq_wrapper assembly function
 extern void irq_wrapper(void);
@@ -269,15 +267,10 @@ void irq_handler()
 {
   /* COME BACK AND FIX THIS. */
   volatile unsigned int timeNow = reg_read(OSCR);
-  unsigned int period = 0;
-  if(oldOSCR + PERIOD < timeNow)
-  {
-  	period = timeNow - oldOSCR - PERIOD;
-  }
-  reg_write(OSMR0, timeNow + ((unsigned int)PERIOD) - period);
+  reg_write(OSMR0, reg_read(OSMR0) + PERIOD);
   global_time += 10;
   reg_set(OSSR, OS_MASK);
-  oldOSCR = reg_read(OSCR);
+  dev_update(global_time);
 }
 
 /* C_SWI_Handler uses SWI number to call the appropriate function. */
