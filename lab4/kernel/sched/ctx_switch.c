@@ -46,13 +46,13 @@ void dispatch_save(void)
 	uint8_t prio = highest_prio();
 	tcb_t* highest_tcb = runqueue_remove(prio);
 
-	if (prio > cur_tcb->cur_prio) {
+	//if (cur_tcb == NULL || prio > cur_tcb->cur_prio) {
 		//add saved task into run queue
 		runqueue_add(cur_tcb, cur_tcb->cur_prio);
 		ctx_switch_full(highest_tcb->context, cur_tcb->context);
-	} else {
-		runqueue_add(highest_tcb, prio);
-	}
+	//} else {
+	//	runqueue_add(highest_tcb, prio);
+	//}
 }
 
 /**
@@ -81,7 +81,9 @@ void dispatch_nosave(void)
  */
 void dispatch_sleep(void)
 {
-	
+	uint8_t prio = highest_prio();
+	tcb_t* highest_tcb = runqueue_remove(prio);
+	ctx_switch_full(highest_tcb->context, cur_tcb->context);
 }
 
 /**
