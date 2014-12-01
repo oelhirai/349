@@ -40,16 +40,16 @@ static void __attribute__((unused)) idle(void)
 void setDefaultContext(sched_context_t context, void* sp, void* data, task_fun_t task, uint32_t kstack_high)
 {
 	// set up default arguments for new tasks
-	context->r4 = (void*) task;
-	context->r5 = data;
-	context->r6 = sp;
-	context->r7 = 0;
-	context->r8 = 0;
-	context->r9 = 0;
-	context->r10 = 0;
-	context->r11 = 0;
-	context->sp = (void *)kstack_high;
-	context->lr = 0xCAFEBABE;
+	context.r4 = (uint32_t) task;
+	context.r5 = (uint32_t) data;
+	context.r6 = (uint32_t) sp;
+	context.r7 = 0;
+	context.r8 = 0;
+	context.r9 = 0;
+	context.r10 = 0;
+	context.r11 = 0;
+	context.sp = (void *)kstack_high;
+	context.lr = (void *) 0xCAFEBABE;
 }
 /**
  * @brief Allocate user-stacks and initializes the kernel contexts of the
@@ -67,28 +67,28 @@ void setDefaultContext(sched_context_t context, void* sp, void* data, task_fun_t
 void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  __attribute__((unused)))
 {
 	// They are sent sorted
-	int i;
+	size_t i;
 	for(i = 1; i < num_tasks; i++)
 	{
-		system_tcb[i]->native_prio = i;
-		system_tcb[i]->cur_prio = i;
+		system_tcb[i].native_prio = i;
+		system_tcb[i].cur_prio = i;
 		void* sp = (*tasks)->stack_pos;
 		void* data = (*tasks)->data;
 		task_fun_t task = (*tasks)->lambda;
-		setDefaultContext(system_tcb[i]->context, sp, data, task, system_tcb[i]->kstack_high);
-		tasks++
+		setDefaultContext(system_tcb[i].context, sp, data, (task_fun_t)task, (uint32_t)system_tcb[i].kstack_high);
+		tasks++;
 	}
 	// Setup idle task
-	system_tcb[i]->native_prio = i;
-	system_tcb[i]->cur_prio = i;
-	setDefaultContext(system_tcb[i]->context, 0, 0, idle, system_tcb[i]->kstack_high);
+	system_tcb[i].native_prio = i;
+	system_tcb[i].cur_prio = i;
+	setDefaultContext(system_tcb[i].context, 0, 0, (task_fun_t) idle, (uint32_t)system_tcb[i].kstack_high);
 
 	// begin running idle task
 	
 	runqueue_init();
 	for(i = 1; i < num_tasks + 1; i++)
 	{
-		runqueue_add(system_tcb[i], i);
+		runqueue_add((tcb_t*) &system_tcb[i], i);
 	}
 	//ctx_switch_half(system_tcb[1]->context);
 	dispatch_nosave();

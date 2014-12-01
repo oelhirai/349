@@ -242,7 +242,6 @@ void IRQ_setup()
   reg_write(OSMR0, timeNow + PERIOD);
   reg_set(ICMR, IC_MASK);
   reg_clear(ICLR, IC_MASK);
-  oldOSCR = reg_read(OSCR);
 }
 
 /*

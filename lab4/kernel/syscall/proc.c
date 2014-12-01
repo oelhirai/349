@@ -25,7 +25,7 @@
 int task_create(task_t* tasks , size_t num_tasks)
 {
 	task_t* sortedTasks[num_tasks];
-	int i, j;
+	size_t i, j;
 	for(i = 0; i < num_tasks; i ++)
 	{
 		sortedTasks[i] = &tasks[i];
@@ -34,7 +34,7 @@ int task_create(task_t* tasks , size_t num_tasks)
 	{
 		for(j = i + 1; j < num_tasks; j++)
 		{
-			if(*(sortedTasks[i])->T > *(sortedTasks[j])->T)
+			if(sortedTasks[i]->T > sortedTasks[j]->T)
 			{
 				task_t* temp = sortedTasks[j];
 				sortedTasks[j] = sortedTasks[i];
@@ -42,7 +42,7 @@ int task_create(task_t* tasks , size_t num_tasks)
 			}
 		}
 	}
-	allocate_task(sortedTasks, num_tasks);
+	allocate_tasks(sortedTasks, num_tasks);
 	return 1; /* remove this line after adding your code */
 }
 

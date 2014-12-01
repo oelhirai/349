@@ -51,14 +51,6 @@ void dispatch_save(void)
 	runqueue_add(cur_tcb, cur_tcb->cur_prio);
 	ctx_switch_full((void*) &highest_tcb->context, (void*) &cur_tcb->context);
 
-	// switch kstacks, and check if new task is a new task
-	check_new_task(cur_tcb->kstack_high, highest_tcb->kstack_high);
-
-	// if task that we have context switched to is newly launched, call launch_task
-
-	// else continue
-
-	//} else {
 	//	runqueue_add(highest_tcb, prio);
 	//}
 }
