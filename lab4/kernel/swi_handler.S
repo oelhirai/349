@@ -19,11 +19,6 @@ swi_handler:
     @ Set Param 2: pointer to parameters on stack
     mov     r1, sp
 
-    @ unmask interrupt bits to ensure IRQ
-    mrs     r2, cpsr
-    bic     r2, r2, #0x080  @ Mask the flag bits.
-    msr     cpsr, r2
-
     @ get spsr into general purpose (gp) registers
     mrs     r2, spsr
 
@@ -33,6 +28,11 @@ swi_handler:
     /* Recover user registers and save */
     stmfd    sp, {r0, sp, lr}^
     add      sp, sp, #-12
+
+    @ unmask interrupt bits to ensure IRQ
+    mrs     r2, cpsr
+    bic     r2, r2, #0x080  @ Mask the flag bits.
+    msr     cpsr, r2
 
     @ Set Param 1: extract SWI and get SWI no. by bit-masking
     ldr     r0, [lr, #-4]
