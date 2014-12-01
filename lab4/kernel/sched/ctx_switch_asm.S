@@ -42,26 +42,76 @@ FUNC(launch_task)
 /* add your code to perform a full context switch */
 FUNC(ctx_switch_full)
 	str		r4, [r1]  /* begin saving r4-r11, sp, lr from current context */
-	add		r1, #32
+	add		r1, #4
 	str		r5, [r1]
-	add		r1, #32
+	add		r1, #4
 	str		r6, [r1]
-	add		r1, #32
+	add		r1, #4
 	str		r7, [r1]
-	add		r1, #32
+	add		r1, #4
 	str		r8, [r1]
-	add		r1, #32
+	add		r1, #4
 	str		r9, [r1]
-	add		r1, #32
+	add		r1, #4
 	str		r10, [r1]
-	add		r1, #32
+	add		r1, #4
 	str		r11, [r1]	
-	add		r1, #32
+	add		r1, #4
 	str		sp, [r1]	/* pointers assumed to be 32 bit values */
-	add		r1, #32
+	add		r1, #4
 	str		lr, [r1]
+
+	ldr		r4, [r0]
+	add		r0, #4
+	ldr		r5, [r0]
+	add		r0, #4
+	ldr		r6, [r0]
+	add		r0, #4
+	ldr		r7, [r0]
+	add		r0, #4
+	ldr		r8, [r0]
+	add		r0, #4
+	ldr		r9, [r0]
+	add		r0, #4
+	ldr		r10, [r0]
+	add		r0, #4
+	ldr		r11, [r0]
+	add		r0, #4
+	ldr		sp, [r0]
+	add		r0, #4
+	ldr		lr, [r0]
+	add		r0, #4
+
+	/* check if new task (cmp against dummy value) */
+	ldr 	ip, =0xcafebabe
+	cmp     lr, ip
+	beq     launch_task
 
 
 /*add your code to perform a half context switch */	
 FUNC(ctx_switch_half)
+	/* load context of new task */
+	ldr		r4, [r0]
+	add		r0, #4
+	ldr		r5, [r0]
+	add		r0, #4
+	ldr		r6, [r0]
+	add		r0, #4
+	ldr		r7, [r0]
+	add		r0, #4
+	ldr		r8, [r0]
+	add		r0, #4
+	ldr		r9, [r0]
+	add		r0, #4
+	ldr		r10, [r0]
+	add		r0, #4
+	ldr		r11, [r0]
+	add		r0, #4
+	ldr		sp, [r0]
+	add		r0, #4
+	ldr		lr, [r0]
+	add		r0, #4
 
+
+	/* launch task */
+	beq     launch_task

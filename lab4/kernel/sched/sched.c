@@ -37,18 +37,19 @@ static void __attribute__((unused)) idle(void)
 }
 
 
-void setDefaultContext(sched_context_t context, void* sp)
+void setDefaultContext(sched_context_t context, void* sp, void* data, task_fun_t task, uint32_t kstack_high)
 {
-	context->r4 = 0;
-	context->r5 = 0;
-	context->r6 = 0;
+	// set up default arguments for new tasks
+	context->r4 = (void*) task;
+	context->r5 = data;
+	context->r6 = sp;
 	context->r7 = 0;
 	context->r8 = 0;
 	context->r9 = 0;
 	context->r10 = 0;
 	context->r11 = 0;
-	context->sp = sp;
-	context->lr = 0xdeadbeef;
+	context->sp = (void *)kstack_high;
+	context->lr = 0xCAFEBABE;
 }
 /**
  * @brief Allocate user-stacks and initializes the kernel contexts of the
@@ -71,11 +72,17 @@ void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  _
 	{
 		system_tcb[i]->native_prio = i;
 		system_tcb[i]->cur_prio = i;
-		void* sp = *tasks->stack_pos;
-		setDefaultContext(system_tcb[i]->context, sp);
-		tasks ++;
-	}	
+		void* sp = (*tasks)->stack_pos;
+		void* data = (*tasks)->data;
+		task_fun_t task = (*tasks)->lambda;
+		setDefaultContext(system_tcb[i]->context, sp, data, task, system_tcb[i]->kstack_high);
+		tasks++
+	}
 	system_tcb[i]->native_prio = i;
 	system_tcb[i]->cur_prio = i;
+	setDefaultContext(system_tcb[i]->context, 0, 0, idle, system_tcb[i]->kstack_high);
+
+	// begin running idle task
+	ctx_switch_half(system_tcb[i]->context);
 }
 

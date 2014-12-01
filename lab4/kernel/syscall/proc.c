@@ -42,6 +42,7 @@ int task_create(task_t* tasks , size_t num_tasks)
 			}
 		}
 	}
+	allocate_task(sortedTasks, num_tasks);
 	return 1; /* remove this line after adding your code */
 }
 
