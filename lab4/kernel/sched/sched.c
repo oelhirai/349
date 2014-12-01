@@ -90,6 +90,7 @@ void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  _
 	{
 		runqueue_add(system_tcb[i], i);
 	}
-	ctx_switch_half(system_tcb[1]->context);
+	//ctx_switch_half(system_tcb[1]->context);
+	dispatch_nosave();
 }
 
