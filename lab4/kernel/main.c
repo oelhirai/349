@@ -264,7 +264,6 @@ int* IRQ_SWI_addr(int initAddr)
 
 void irq_handler()
 {
-  /* COME BACK AND FIX THIS. */
   volatile unsigned int timeNow = reg_read(OSCR);
   reg_write(OSMR0, reg_read(OSMR0) + PERIOD);
   global_time += 10;

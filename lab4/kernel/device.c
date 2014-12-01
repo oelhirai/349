@@ -16,6 +16,7 @@
 #include <arm/psr.h>
 #include <arm/exception.h>
 
+#define NULL ((void *) 0)
 /**
  * @brief Fake device maintainence structure.
  * Since our tasks are periodic, we can represent 
@@ -48,8 +49,8 @@ void dev_init(void)
 	int i;
 	for(i = 0; i < NUM_DEVICES; i ++)
 	{
-		devices[i]->sleep_queue = NULL;
-		devices[i]->next_match = dev_freq[i];
+		devices[i].sleep_queue = NULL;
+		devices[i].next_match = dev_freq[i];
 	}
 }
 
@@ -63,9 +64,9 @@ void dev_init(void)
 void dev_wait(unsigned int dev)
 {
 	dev_t device = devices[dev];
-	tcb_t* prev = device->sleep_queue;
+	tcb_t* prev = device.sleep_queue;
 	tcb_t* currTcb = get_cur_tcb();
-	device->sleep_queue = currTcb;
+	device.sleep_queue = currTcb;
 	currTcb->sleep_queue = prev;
 }
 
@@ -79,13 +80,15 @@ void dev_wait(unsigned int dev)
  */
 void dev_update(unsigned long millis)
 {
-	int i;
+	int i, j;
+	j = 0; // flag if device ready
 	for(i = 0; i < NUM_DEVICES; i++)
 	{
 		if(millis % dev_freq[i] == 0)
 		{
+			j = 1;
 			dev_t device = devices[i];
-			tcb_t* task = device->sleep_queue;
+			tcb_t* task = device.sleep_queue;
 			while(task != NULL)
 			{
 				runqueue_add(task, task->cur_prio);
@@ -94,5 +97,6 @@ void dev_update(unsigned long millis)
 			//device->next_match += dev_freq[i];
 		}
 	}
+	if (j == 1) dispatch_save();
 }
 

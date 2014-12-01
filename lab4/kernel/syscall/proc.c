@@ -28,7 +28,7 @@ int task_create(task_t* tasks , size_t num_tasks)
 	size_t i, j;
 	for(i = 0; i < num_tasks; i ++)
 	{
-		sortedTasks[i] = &tasks[i];
+		sortedTasks[i] = &(tasks[i]);
 	}
 	for(i = 0; i < num_tasks; i++)
 	{
@@ -50,7 +50,7 @@ int event_wait(unsigned int dev)
 {
 	dev_wait(dev);
 	// Add stuff to start next task
-	dispatch_save();
+	dispatch_sleep();
 	return 1; /* remove this line after adding your code */	
 }
 

@@ -81,7 +81,7 @@ void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  _
 	// Setup idle task
 	system_tcb[i].native_prio = i;
 	system_tcb[i].cur_prio = i;
-	setDefaultContext(system_tcb[i].context, 0, 0, (task_fun_t) idle, (uint32_t)system_tcb[i].kstack_high);
+	setDefaultContext(system_tcb[i].context, 0, 0, (task_fun_t)idle, (uint32_t)system_tcb[i].kstack_high);
 
 	// begin running idle task
 	

@@ -23,6 +23,7 @@ void fun1(void* str)
 	while(1)
 	{
 		putchar((int)str);
+		sleep(1000);
 		if (event_wait(0) < 0)
 			panic("Dev 0 failed");
 	}
@@ -32,6 +33,7 @@ void fun2(void* str)
 {
 	while(1)
 	{
+		sleep(1000);
 		putchar((int)str);
 		if (event_wait(1) < 0)
 			panic("Dev 1 failed");

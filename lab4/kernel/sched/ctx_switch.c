@@ -49,7 +49,7 @@ void dispatch_save(void)
 	//if (cur_tcb == NULL || prio > cur_tcb->cur_prio) {
 		//add saved task into run queue
 	runqueue_add(cur_tcb, cur_tcb->cur_prio);
-	ctx_switch_full((void*) &highest_tcb->context, (void*) &cur_tcb->context);
+	ctx_switch_full((void*) &(highest_tcb->context), (void*) &(cur_tcb->context));
 
 	//	runqueue_add(highest_tcb, prio);
 	//}
@@ -69,7 +69,7 @@ void dispatch_nosave(void)
 	cur_tcb = highest_tcb;
 
 	// set current registers to that of task we're switching to
-	ctx_switch_half((void*) &highest_tcb->context);
+	ctx_switch_half((void*) &(highest_tcb->context));
 }
 
 
@@ -83,7 +83,7 @@ void dispatch_sleep(void)
 {
 	uint8_t prio = highest_prio();
 	tcb_t* highest_tcb = runqueue_remove(prio);
-	ctx_switch_full((void*) &highest_tcb->context, (void*)&cur_tcb->context);
+	ctx_switch_full((void*) &(highest_tcb->context), (void*)&(cur_tcb->context));
 }
 
 /**
