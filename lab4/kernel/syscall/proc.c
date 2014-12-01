@@ -22,14 +22,35 @@
 #include <arm/physmem.h>
 #include <device.h>
 
-int task_create(task_t* tasks  __attribute__((unused)), size_t num_tasks  __attribute__((unused)))
+int task_create(task_t* tasks , size_t num_tasks)
 {
-  return 1; /* remove this line after adding your code */
+	task_t* sortedTasks[num_tasks];
+	int i, j;
+	for(i = 0; i < num_tasks; i ++)
+	{
+		sortedTasks[i] = &tasks[i];
+	}
+	for(i = 0; i < num_tasks; i++)
+	{
+		for(j = i + 1; j < num_tasks; j++)
+		{
+			if(*(sortedTasks[i])->T > *(sortedTasks[j])->T)
+			{
+				task_t* temp = sortedTasks[j];
+				sortedTasks[j] = sortedTasks[i];
+				sortedTasks[i] = temp;
+			}
+		}
+	}
+	return 1; /* remove this line after adding your code */
 }
 
-int event_wait(unsigned int dev  __attribute__((unused)))
+int event_wait(unsigned int dev)
 {
-  return 1; /* remove this line after adding your code */	
+	dev_wait(dev);
+	// Add stuff to start next task
+	dispatch_save();
+	return 1; /* remove this line after adding your code */	
 }
 
 /* An invalid syscall causes the kernel to exit. */
