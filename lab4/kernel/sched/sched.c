@@ -78,11 +78,18 @@ void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  _
 		setDefaultContext(system_tcb[i]->context, sp, data, task, system_tcb[i]->kstack_high);
 		tasks++
 	}
+	// Setup idle task
 	system_tcb[i]->native_prio = i;
 	system_tcb[i]->cur_prio = i;
 	setDefaultContext(system_tcb[i]->context, 0, 0, idle, system_tcb[i]->kstack_high);
 
 	// begin running idle task
-	ctx_switch_half(system_tcb[i]->context);
+	
+	runqueue_init();
+	for(i = 1; i < num_tasks + 1; i++)
+	{
+		runqueue_add(system_tcb[i], i);
+	}
+	ctx_switch_half(system_tcb[1]->context);
 }
 
