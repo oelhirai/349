@@ -20,6 +20,7 @@
 
 tcb_t system_tcb[OS_MAX_TASKS]; /*allocate memory for system TCBs */
 
+// Probably dont need this
 void sched_init(task_t* main_task  __attribute__((unused)))
 {
 	
@@ -35,6 +36,20 @@ static void __attribute__((unused)) idle(void)
 	 while(1);
 }
 
+
+void setDefaultContext(sched_context_t context, void* sp)
+{
+	context->r4 = 0;
+	context->r5 = 0;
+	context->r6 = 0;
+	context->r7 = 0;
+	context->r8 = 0;
+	context->r9 = 0;
+	context->r10 = 0;
+	context->r11 = 0;
+	context->sp = sp;
+	context->lr = 0xdeadbeef;
+}
 /**
  * @brief Allocate user-stacks and initializes the kernel contexts of the
  * given threads.
@@ -50,6 +65,17 @@ static void __attribute__((unused)) idle(void)
  */
 void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  __attribute__((unused)))
 {
-	
+	// They are sent sorted
+	int i;
+	for(i = 1; i < num_tasks; i++)
+	{
+		system_tcb[i]->native_prio = i;
+		system_tcb[i]->cur_prio = i;
+		void* sp = *tasks->stack_pos;
+		setDefaultContext(system_tcb[i]->context, sp);
+		tasks ++;
+	}	
+	system_tcb[i]->native_prio = i;
+	system_tcb[i]->cur_prio = i;
 }
 
