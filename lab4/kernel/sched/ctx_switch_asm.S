@@ -113,5 +113,5 @@ FUNC(ctx_switch_half)
 	add		r0, #4
 
 	/* launch task */
-	beq     launch_task
+	b     launch_task
 

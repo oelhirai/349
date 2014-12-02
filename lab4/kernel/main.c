@@ -20,6 +20,7 @@
 #include <bits/swi.h>
 #include <arm/reg.h>
 #include <arm/interrupt.h>
+#include <syscall.h>
 
 #include "swi_handler.h"
 #include "user_setup.h"
@@ -264,7 +265,6 @@ int* IRQ_SWI_addr(int initAddr)
 
 void irq_handler()
 {
-  volatile unsigned int timeNow = reg_read(OSCR);
   reg_write(OSMR0, reg_read(OSMR0) + PERIOD);
   global_time += 10;
   reg_set(OSSR, OS_MASK);
@@ -279,6 +279,12 @@ int C_SWI_Handler(int swiNum, int *regs) {
 	//volatile unsigned long timeNow, timeNew, timeSleep;
 	switch (swiNum) {
 		// ssize_t read(int fd, void *buf, size_t count);
+		case CREATE_SWI:
+			task_create_syscall((task_t*) regs[0] , (size_t) regs[1]);
+			break;
+		case EVENT_WAIT:
+			event_wait_syscall((unsigned int) regs[0]);
+			break;
 		case READ_SWI:
 			count = read_handler(regs[0], (void *) regs[1], (size_t) regs[2]);
 			break;

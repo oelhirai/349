@@ -20,7 +20,7 @@ void sleep_syscall(unsigned long millis);
 
 void invalid_syscall(unsigned int num) __attribute__((noreturn));
 
-int task_create(task_t* tasks, size_t num_tasks);
-int event_wait(unsigned int dev);
+int task_create_syscall(task_t* tasks, size_t num_tasks);
+int event_wait_syscall(unsigned int dev);
 
 #endif /* SYSCALL_H */

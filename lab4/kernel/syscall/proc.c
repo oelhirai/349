@@ -22,7 +22,7 @@
 #include <arm/physmem.h>
 #include <device.h>
 
-int task_create(task_t* tasks , size_t num_tasks)
+int task_create_syscall(task_t* tasks , size_t num_tasks)
 {
 	task_t* sortedTasks[num_tasks];
 	size_t i, j;
@@ -46,7 +46,7 @@ int task_create(task_t* tasks , size_t num_tasks)
 	return 1; /* remove this line after adding your code */
 }
 
-int event_wait(unsigned int dev)
+int event_wait_syscall(unsigned int dev)
 {
 	dev_wait(dev);
 	// Add stuff to start next task
