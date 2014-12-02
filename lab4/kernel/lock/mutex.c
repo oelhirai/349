@@ -21,7 +21,7 @@
 #include <exports.h> // temp
 #endif
 
-#define NULL ((char*)(0))
+#define NULL ((void*)(0))
 
 mutex_t gtMutex[OS_NUM_MUTEX];
 int mut_cnt = -1;
@@ -34,9 +34,9 @@ void mutex_init()
 	{
 		mutex_t* mutex = &gtMutex[i];
 		mutex->bAvailable = TRUE;
-		mutex->pHolding_Tcb = NULL;
+		mutex->pHolding_Tcb = (tcb_t*) NULL;
 		mutex->bLock = 0;
-		mutex->pSleep_queue = NULL;
+		mutex->pSleep_queue = (tcb_t*) NULL;
 	}
 }
 
@@ -60,17 +60,17 @@ int mutex_lock(int m)
 	if(mutex->bAvailable == TRUE)
 	{
 		mutex->bAvailable = FALSE;
-		mutex->pHolding_Tcb = curr;
+		mutex->pHolding_Tcb = currTCB;
 		currTCB->holds_lock = 1;
 		mutex->bLock = 1;
 		// TODO : remove the next comment
 		// Error check if we fuck up.
-		mutex->pSleep_queue = NULL;
+		mutex->pSleep_queue = (tcb_t *) NULL;
 	}
 	else
 	{
 		tcb_t* next = mutex->pSleep_queue;
-		if(next == NULL)
+		if(next == (tcb_t*) NULL)
 		{
 			mutex->pSleep_queue = currTCB;
 		}
@@ -115,7 +115,7 @@ int mutex_unlock(int m)
 		runqueue_add(waiter, waiter->cur_prio);
 		mutex->pHolding_Tcb = waiter;
 		waiter->holds_lock = 1;
-		if(waiter->cur_prio < highest_prio)
+		if(waiter->cur_prio < highest_prio())
 			dispatch_save();
 	}
 
