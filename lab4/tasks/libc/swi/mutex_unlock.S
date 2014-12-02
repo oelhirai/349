@@ -11,4 +11,5 @@
 	.file "mutex_unlock.S"
 
 FUNC(mutex_unlock)
-	@ Add code here.  Put your name at the top.
+	swi 	MUTEX_UNLOCK @make the system call
+    mov     pc, lr

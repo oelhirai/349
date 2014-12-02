@@ -11,4 +11,5 @@
 	.file "mutex_create.S"
 
 FUNC(mutex_create)
-	@ Add code here.  Put your name at the top.
+	swi 	MUTEX_CREATE @make the system call
+    mov     pc, lr
