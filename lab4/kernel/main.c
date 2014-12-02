@@ -283,6 +283,7 @@ int C_SWI_Handler(int swiNum, int *regs) {
 			task_create_syscall((task_t*) regs[0] , (size_t) regs[1]);
 			break;
 		case EVENT_WAIT:
+			//printf("We hit event wait.");
 			event_wait_syscall((unsigned int) regs[0]);
 			break;
 		case READ_SWI:

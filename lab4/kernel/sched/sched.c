@@ -32,7 +32,7 @@ void sched_init(task_t* main_task  __attribute__((unused)))
  * @brief This is the idle task that the system runs when no other task is runnable
  */
  
-static void __attribute__((unused)) idle(void)
+static void idle(void)
 {
 	 enable_interrupts();
 	 while(1);

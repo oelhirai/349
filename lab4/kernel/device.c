@@ -8,6 +8,7 @@
 
 #include <types.h>
 #include <assert.h>
+#include <exports.h>
 
 #include <task.h>
 #include <sched.h>
@@ -63,11 +64,14 @@ void dev_init(void)
  */
 void dev_wait(unsigned int dev)
 {
-	dev_t device = devices[dev];
-	tcb_t* prev = device.sleep_queue;
+	printf("dev_wait hit %d \n", dev);
+	dev_t* device = &(devices[dev]);
+	tcb_t* prev = device->sleep_queue;
 	tcb_t* currTcb = get_cur_tcb();
-	device.sleep_queue = currTcb;
+	device->sleep_queue = currTcb;
 	currTcb->sleep_queue = prev;
+	//if(device.sleep_queue == NULL)
+		//printf("null. Lol tyou suck \n");
 }
 
 
@@ -80,23 +84,34 @@ void dev_wait(unsigned int dev)
  */
 void dev_update(unsigned long millis)
 {
+	//printf("within dev update \n");
 	int i, j;
 	j = 0; // flag if device ready
 	for(i = 0; i < NUM_DEVICES; i++)
 	{
 		if(millis % dev_freq[i] == 0)
 		{
-			j = 1;
-			dev_t device = devices[i];
-			tcb_t* task = device.sleep_queue;
+			//printf("inside if statement, get device %d \n", i);
+			dev_t* device = &(devices[i]);
+			//printf("get task from sleep queue \n");
+			tcb_t* task = device->sleep_queue;
 			while(task != NULL)
 			{
+				j = 1;
+				//printf("adding task to runqueue %d\n", i);
 				runqueue_add(task, task->cur_prio);
+				//printf("2 \n");
 				task = task->sleep_queue;
+				//printf("3 \n");
 			}
 			//device->next_match += dev_freq[i];
+			device->sleep_queue = NULL;
 		}
 	}
-	if (j == 1) dispatch_save();
+
+	if (j == 1) {
+		printf("now dispatch saving \n");
+		dispatch_save();
+	}
 }
 

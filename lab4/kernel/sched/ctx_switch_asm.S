@@ -80,12 +80,13 @@ FUNC(ctx_switch_full)
 	ldr		sp, [r0]
 	add		r0, #4
 	ldr		lr, [r0]
-	add		r0, #4
 
 	/* check if new task (cmp against dummy value) */
 	ldr 	ip, =0xcafebabe
 	cmp     lr, ip
 	beq     launch_task
+
+	mov 	pc, lr
 
 
 /*add your code to perform a half context switch */	
@@ -110,7 +111,6 @@ FUNC(ctx_switch_half)
 	ldr		sp, [r0]
 	add		r0, #4
 	ldr		lr, [r0]
-	add		r0, #4
 
 	/* launch task */
 	b     launch_task

@@ -45,6 +45,11 @@ swi_handler:
     /* Call the SWI handler in C. */
     bl      C_SWI_Handler
 
+    @ mask interrupt bits to ensure IRQ doesnt happen
+    mrs     r2, cpsr
+    orr     r2, r2, #0x080  @ Mask the flag bits.
+    msr     cpsr, r2
+
     /* Restore registers.  Also restore CPSR. */
     ldmfd    sp, {r0, sp, lr}^
     add      sp, sp, #12

@@ -50,6 +50,8 @@ void dispatch_save(void)
 		//add saved task into run queue
 	runqueue_add(cur_tcb, cur_tcb->cur_prio);
 	ctx_switch_full((void*) &(highest_tcb->context), (void*) &(cur_tcb->context));
+	cur_tcb = highest_tcb;
+	printf("in dispatch save, %d\n",prio);
 
 	//	runqueue_add(highest_tcb, prio);
 	//}
@@ -83,7 +85,8 @@ void dispatch_sleep(void)
 {
 	uint8_t prio = highest_prio();
 	tcb_t* highest_tcb = runqueue_remove(prio);
-	ctx_switch_full((void*) &(highest_tcb->context), (void*)&(cur_tcb->context));
+	ctx_switch_full((void*) &(highest_tcb->context), (void*)&(cur_tcb->context));	
+	cur_tcb = highest_tcb;
 }
 
 /**
