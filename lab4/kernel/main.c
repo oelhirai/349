@@ -13,6 +13,7 @@
 #include <sched.h>
 #include <device.h>
 #include <assert.h>
+#include <lock.h>
 
 #include <exports.h>
 #include <bits/errno.h>
@@ -123,6 +124,8 @@ int kmain(int argc __attribute__((unused)), char** argv  __attribute__((unused))
 
 	global_data = table;
 	global_time = 0;
+
+	mutex_init();
 
 	// &S_Handler" in Jump Table.
 	int *swi_handler_addr = IRQ_SWI_addr(SWI_VECT_ADDR);

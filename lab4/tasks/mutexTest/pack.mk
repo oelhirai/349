@@ -1,0 +1,6 @@
+PROGS_DAGGER_OBJS := mutexTest.o
+PROGS_DAGGER_OBJS := $(PROGS_DAGGER_OBJS:%=$(TDIR)/mutexTest/%)
+ALL_OBJS += $(PROGS_DAGGER_OBJS)
+
+$(TDIR)/bin/mutexTest : $(TSTART) $(PROGS_DAGGER_OBJS) $(TLIBC)
+
