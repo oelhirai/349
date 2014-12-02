@@ -64,7 +64,7 @@ void dev_init(void)
  */
 void dev_wait(unsigned int dev)
 {
-	printf("dev_wait hit %d \n", dev);
+	//printf("dev_wait hit %d \n", dev);
 	dev_t* device = &(devices[dev]);
 	tcb_t* prev = device->sleep_queue;
 	tcb_t* currTcb = get_cur_tcb();
@@ -110,7 +110,7 @@ void dev_update(unsigned long millis)
 	}
 
 	if (j == 1) {
-		printf("now dispatch saving \n");
+		//printf("now dispatch saving \n");
 		dispatch_save();
 	}
 }
