@@ -1,6 +1,5 @@
- \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/start.o:  \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/start.S \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/asm.h
+/home/shashwat/Desktop/349/349/lab4/kernel/start.o:  \
+ /home/shashwat/Desktop/349/349/lab4/kernel/start.S \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/asm.h
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/asm.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/asm.h:

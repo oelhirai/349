@@ -17,6 +17,8 @@
 #include <bits/errno.h>
 #include <arm/psr.h>
 #include <arm/exception.h>
+#include <exports.h>
+
 #ifdef DEBUG_MUTEX
 #include <exports.h> // temp
 #endif
@@ -24,7 +26,7 @@
 #define NULL ((void*)(0))
 
 mutex_t gtMutex[OS_NUM_MUTEX];
-int mut_cnt = -1;
+int mut_cnt = 0;
 
 
 void mutex_init()
@@ -43,14 +45,17 @@ void mutex_init()
 
 int mutex_create(void)
 {
-	mut_cnt ++;
-	if(mut_cnt > OS_NUM_MUTEX)
+	int temp = mut_cnt;
+	mut_cnt++;
+	if(temp > OS_NUM_MUTEX)
 		return ENOMEM;
-	return mut_cnt; 
+	printf("no error \n");
+	return temp; 
 }
 
 int mutex_lock(int m)
 {	
+	printf("we got to mutex lock yo %d \n", m);
 	if(m > mut_cnt)
 		return EINVAL;
 	mutex_t* mutex = &gtMutex[m];
@@ -59,6 +64,7 @@ int mutex_lock(int m)
 		return EDEADLOCK;
 	if(mutex->bAvailable == TRUE)
 	{
+		printf("the mutex is available \n");
 		mutex->bAvailable = FALSE;
 		mutex->pHolding_Tcb = currTCB;
 		currTCB->holds_lock = 1;

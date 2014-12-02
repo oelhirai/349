@@ -12,7 +12,7 @@
 #include <unistd.h>
 
 int globes = 0;
-int mutex;
+int mutex = 0;
 
 void panic(const char* str)
 {
@@ -62,8 +62,10 @@ int main(int argc, char** argv)
 	tasks[1].C = 1;
 	tasks[1].T = PERIOD_DEV0;
 
-	mutex = mutex_create();
+	mutex = (int) mutex_create();
+	printf("%d \n", mutex);
 	task_create(tasks, 2);
+
 	argc=argc; /* remove compiler warning */
 	argv[0]=argv[0]; /* remove compiler warning */
 

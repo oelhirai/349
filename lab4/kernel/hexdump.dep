@@ -1,21 +1,20 @@
- \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/hexdump.o:  \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/hexdump.c \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/ctype.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/inline.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/uboot/include/exports.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/types.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/stdarg.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/uboot/include/_exports.h
+/home/shashwat/Desktop/349/349/lab4/kernel/hexdump.o:  \
+ /home/shashwat/Desktop/349/349/lab4/kernel/hexdump.c \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/ctype.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/inline.h \
+  /home/shashwat/Desktop/349/349/lab4/uboot/include/exports.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/types.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/stdarg.h \
+  /home/shashwat/Desktop/349/349/lab4/uboot/include/_exports.h
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/ctype.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/ctype.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/inline.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/inline.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/uboot/include/exports.h:
+/home/shashwat/Desktop/349/349/lab4/uboot/include/exports.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/types.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/types.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/stdarg.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/stdarg.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/uboot/include/_exports.h:
+/home/shashwat/Desktop/349/349/lab4/uboot/include/_exports.h:

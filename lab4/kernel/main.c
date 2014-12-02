@@ -278,10 +278,21 @@ void irq_handler()
 int C_SWI_Handler(int swiNum, int *regs) {
 				volatile unsigned long timeToReach, timeSleep;
 	int count = 0;
-
+	//int i;
 	//volatile unsigned long timeNow, timeNew, timeSleep;
 	switch (swiNum) {
 		// ssize_t read(int fd, void *buf, size_t count);
+		case MUTEX_CREATE:
+			//i = mutex_create();
+			//printf("i is = %d \n", i);
+			return (unsigned int) mutex_create();
+			break;
+		case MUTEX_LOCK :
+			mutex_lock((int) regs[0]);
+			break;
+		case MUTEX_UNLOCK :
+			mutex_unlock((int) regs[0]);
+			break;
 		case CREATE_SWI:
 			task_create_syscall((task_t*) regs[0] , (size_t) regs[1]);
 			break;

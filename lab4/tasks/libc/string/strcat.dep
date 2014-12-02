@@ -1,12 +1,11 @@
- \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/string/strcat.o:  \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/string/strcat.c \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/string.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/sys/types.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/types.h
+/home/shashwat/Desktop/349/349/lab4/tasks/libc/string/strcat.o:  \
+ /home/shashwat/Desktop/349/349/lab4/tasks/libc/string/strcat.c \
+  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/string.h \
+  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/sys/types.h \
+  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/types.h
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/string.h:
+/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/string.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/sys/types.h:
+/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/sys/types.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/types.h:
+/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/types.h:

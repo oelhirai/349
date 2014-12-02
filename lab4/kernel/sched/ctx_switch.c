@@ -13,6 +13,7 @@
 #include <config.h>
 #include <kernel.h>
 #include "sched_i.h"
+#include <exports.h>
 
 #ifdef DEBUG_MUTEX
 #include <exports.h>
