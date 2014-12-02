@@ -27,7 +27,7 @@ void fun1(void* str)
 		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 2;
-		vsprintf("%d \n", globes);
+		vsprintf("%d \n", &globes);
 		mutex_unlock(mutex);
 		if (event_wait(0) < 0)
 			panic("Dev 0 failed");
@@ -41,7 +41,7 @@ void fun2(void* str)
 		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 3;
-		vsprintf("%d \n", globes);
+		vsprintf("%d \n", &globes);
 		mutex_unlock(mutex);
 		if (event_wait(1) < 0)
 			panic("Dev 1 failed");
