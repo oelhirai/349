@@ -49,44 +49,47 @@ int mutex_create(void)
 	mut_cnt++;
 	if(temp > OS_NUM_MUTEX)
 		return ENOMEM;
-	printf("no error \n");
 	return temp; 
 }
 
 int mutex_lock(int m)
 {	
-	printf("we got to mutex lock yo %d \n", m);
-	if(m > mut_cnt)
+	//check if locking previously unallocated
+	if(m > mut_cnt || m < 0)
 		return EINVAL;
 	mutex_t* mutex = &gtMutex[m];
 	tcb_t* currTCB = get_cur_tcb();
+
+	// ensure this task is not holding on to its own lock
 	if(mutex->pHolding_Tcb == currTCB )
 		return EDEADLOCK;
+
 	if(mutex->bAvailable == TRUE)
 	{
-		printf("the mutex is available \n");
 		mutex->bAvailable = FALSE;
 		mutex->pHolding_Tcb = currTCB;
 		currTCB->holds_lock = 1;
 		mutex->bLock = 1;
-		// TODO : remove the next comment
-		// Error check if we fuck up.
 		mutex->pSleep_queue = (tcb_t *) NULL;
 	}
+
+	// lock is not free, the current task should sleep then 
+	// switch to highest priority task
 	else
 	{
 		tcb_t* next = mutex->pSleep_queue;
 		if(next == (tcb_t*) NULL)
 		{
+			// first task to enter sleep queue
 			mutex->pSleep_queue = currTCB;
 		}
 		else
 		{
+			// not the first task, place task at end of sleep queue
 			while(next->sleep_queue != NULL)
 			{
 				next = next->sleep_queue;
 			}
-			
 			next->sleep_queue = currTCB;
 		}
 		currTCB->sleep_queue = NULL;
@@ -97,12 +100,14 @@ int mutex_lock(int m)
 
 int mutex_unlock(int m)
 {
-	if(m > mut_cnt)
+	//check if unlocking mutex previously unallocated
+	if(m > mut_cnt || m < 0)
 		return EINVAL;
 
 	tcb_t* currTCB = get_cur_tcb();
 	mutex_t* mutex = &gtMutex[m];
 
+	// The current task does not hold the mutex
 	if(mutex->pHolding_Tcb != currTCB )
 		return EPERM;
 
@@ -110,12 +115,15 @@ int mutex_unlock(int m)
 
 	if(mutex->pSleep_queue == NULL)
 	{
+		// make this mutex available (last task to need mutex)
 		mutex->bAvailable = TRUE;
 		mutex->pHolding_Tcb = NULL;
 		mutex->bLock = 0;
 	}
 	else
 	{
+		// remove this task from the mutex, wake task
+		// waiting on this mutex, and run if it is of higher priority
 		tcb_t* waiter = mutex->pSleep_queue;
 		mutex->pSleep_queue = waiter->sleep_queue;
 		runqueue_add(waiter, waiter->cur_prio);

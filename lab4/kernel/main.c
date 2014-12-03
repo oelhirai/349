@@ -93,25 +93,6 @@ bool_e check_vector(int addr __attribute__((unused))) {
 	return TRUE;
 }
 
-/* Verifies that the buffer is entirely in valid memory. */
-int check_mem(char *buf, int count, unsigned start, unsigned end) {
-	unsigned start_buf = (unsigned) buf;
-	unsigned end_buf = (unsigned)(buf + count);
-
-	if ( (start_buf < start) || (start_buf > end) ) {
-		return FALSE;
-	}
-	if ( (end_buf < start) || (end_buf > end) ) {
-		return FALSE;
-	}
-	// Overflow case.
-	if ( start_buf >= end_buf ) {
-		return FALSE;
-	}
-
-	return TRUE;
-}
-
 
 uint32_t global_data;
 
@@ -283,8 +264,6 @@ int C_SWI_Handler(int swiNum, int *regs) {
 	switch (swiNum) {
 		// ssize_t read(int fd, void *buf, size_t count);
 		case MUTEX_CREATE:
-			//i = mutex_create();
-			//printf("i is = %d \n", i);
 			return (unsigned int) mutex_create();
 			break;
 		case MUTEX_LOCK :
@@ -297,7 +276,6 @@ int C_SWI_Handler(int swiNum, int *regs) {
 			task_create_syscall((task_t*) regs[0] , (size_t) regs[1]);
 			break;
 		case EVENT_WAIT:
-			//printf("We hit event wait.");
 			event_wait_syscall((unsigned int) regs[0]);
 			break;
 		case READ_SWI:

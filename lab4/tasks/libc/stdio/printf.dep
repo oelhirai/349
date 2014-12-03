@@ -1,23 +1,24 @@
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/printf.o:  \
- /home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/printf.c \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/stdio.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/stdarg.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/sys/types.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/types.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/unistd.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/fileno.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/doprnt.h
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/printf.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/printf.c \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/stdio.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/stdarg.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/sys/types.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/types.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/unistd.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/fileno.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/doprnt.h
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/stdio.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/stdio.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/stdarg.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/stdarg.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/sys/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/sys/types.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/types.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/unistd.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/unistd.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/fileno.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/fileno.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/doprnt.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/doprnt.h:

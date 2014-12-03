@@ -1,20 +1,21 @@
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/doscan.o:  \
- /home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/doscan.c \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/stdarg.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/sys/types.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/types.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/ctype.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/inline.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/doscan.h
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/doscan.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/doscan.c \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/stdarg.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/sys/types.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/types.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/ctype.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/inline.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/doscan.h
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/stdarg.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/stdarg.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/sys/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/sys/types.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/types.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/types.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/ctype.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/ctype.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/inline.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/inline.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/stdio/doscan.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/stdio/doscan.h:

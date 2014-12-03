@@ -23,4 +23,6 @@ void invalid_syscall(unsigned int num) __attribute__((noreturn));
 int task_create_syscall(task_t* tasks, size_t num_tasks);
 int event_wait_syscall(unsigned int dev);
 
+int check_mem(char *buf, int count, unsigned start, unsigned end);
+
 #endif /* SYSCALL_H */

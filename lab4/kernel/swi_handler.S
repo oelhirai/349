@@ -50,9 +50,11 @@ swi_handler:
     orr     r2, r2, #0x080  @ Mask the flag bits.
     msr     cpsr, r2
 
+    add      sp, sp, #4
+
     /* Restore registers.  Also restore CPSR. */
-    ldmfd    sp, {r0, sp, lr}^
-    add      sp, sp, #12
+    ldmfd    sp, {sp, lr}^
+    add      sp, sp, #8
     
     ldmfd    sp!, {r2}
     msr     spsr, r2

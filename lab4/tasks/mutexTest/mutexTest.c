@@ -57,6 +57,7 @@ void fun3(void* str)
 		mutex_lock(mutex);
 		globes = 3;
 		printf("%d \n", globes);
+		sleep(2000);
 		mutex_unlock(mutex);
 		if (event_wait(1) < 0)
 			panic("Dev 1 failed");
@@ -120,6 +121,7 @@ int main(int argc, char** argv)
 	tasks[4].C = 1;
 	tasks[4].T = PERIOD_DEV1;
 
+	sleep(1000);
 	mutex = (int) mutex_create();
 	task_create(tasks, 5);
 
