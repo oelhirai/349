@@ -24,11 +24,11 @@ void fun1(void* str)
 {
 	while(1)
 	{
-		//putchar((int)str);
+		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 1;
 		printf("%d \n", globes);
-		sleep(1000);
+		sleep(1010);
 		mutex_unlock(mutex);
 		if (event_wait(0) < 0)
 			panic("Dev 0 failed");
@@ -39,7 +39,7 @@ void fun2(void* str)
 {
 	while(1)
 	{
-		//putchar((int)str);
+		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 2;
 		printf("%d \n", globes);
@@ -53,11 +53,10 @@ void fun3(void* str)
 {
 	while(1)
 	{
-		//putchar((int)str);
+		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 3;
 		printf("%d \n", globes);
-		sleep(2000);
 		mutex_unlock(mutex);
 		if (event_wait(1) < 0)
 			panic("Dev 1 failed");
@@ -68,7 +67,7 @@ void fun4(void* str)
 {
 	while(1)
 	{
-		//putchar((int)str);
+		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 4;
 		printf("%d \n", globes);
@@ -82,7 +81,7 @@ void fun5(void* str)
 {
 	while(1)
 	{
-		//putchar((int)str);
+		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 5;
 		printf("%d \n", globes);
@@ -99,29 +98,32 @@ int main(int argc, char** argv)
 	tasks[0].data = (void*)'@';
 	tasks[0].stack_pos = (void*)0xa2000000;
 	tasks[0].C = 1;
-	tasks[0].T = PERIOD_DEV3;
+	tasks[0].T = PERIOD_DEV0;
+
 	tasks[1].lambda = fun2;
 	tasks[1].data = (void*)'<';
 	tasks[1].stack_pos = (void*)0xa1000000;
 	tasks[1].C = 1;
-	tasks[1].T = PERIOD_DEV0;
+	tasks[1].T = PERIOD_DEV3;
+
 	tasks[2].lambda = fun3;
 	tasks[2].data = (void*)'<';
-	tasks[2].stack_pos = (void*)0xa1000010;
+	tasks[2].stack_pos = (void*)0xa1001000;
 	tasks[2].C = 1;
-	tasks[2].T = PERIOD_DEV0;
+	tasks[2].T = PERIOD_DEV3;
+
 	tasks[3].lambda = fun4;
 	tasks[3].data = (void*)'<';
-	tasks[3].stack_pos = (void*)0xa1000020;
+	tasks[3].stack_pos = (void*)0xa1002000;
 	tasks[3].C = 1;
-	tasks[3].T = PERIOD_DEV1;
+	tasks[3].T = PERIOD_DEV3;
+
 	tasks[4].lambda = fun5;
 	tasks[4].data = (void*)'<';
-	tasks[4].stack_pos = (void*)0xa1000030;
+	tasks[4].stack_pos = (void*)0xa1003000;
 	tasks[4].C = 1;
-	tasks[4].T = PERIOD_DEV1;
+	tasks[4].T = PERIOD_DEV3;
 
-	sleep(1000);
 	mutex = (int) mutex_create();
 	task_create(tasks, 5);
 
