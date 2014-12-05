@@ -28,6 +28,8 @@
 #define SDRAM_START 0xa0000000
 #define SDRAM_END 0xa3ffffff
 
+ #define NULL (void*)0
+
 /* Verifies that the buffer is entirely in valid memory. */
 int check_mem(char *buf, int count, unsigned start, unsigned end) {
 	unsigned start_buf = (unsigned) buf;
@@ -86,6 +88,9 @@ int event_wait_syscall(unsigned int dev)
 	}
 	dev_wait(dev);
 	// Add stuff to start next task
+	if((get_king() != NULL))
+		runqueue_remove(get_king()->native_prio);
+	set_king(NULL);
 	dispatch_sleep();
 	return 0;
 }

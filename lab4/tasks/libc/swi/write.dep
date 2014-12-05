@@ -1,8 +1,9 @@
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/swi/write.o:  \
- /home/shashwat/Desktop/349/349/lab4/tasks/libc/swi/write.S \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/asm.h \
-  /home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/swi.h
+ \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/swi/write.o:  \
+ /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/swi/write.S \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/asm.h \
+  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/swi.h
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/asm.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/asm.h:
 
-/home/shashwat/Desktop/349/349/lab4/tasks/libc/include/bits/swi.h:
+/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/tasks/libc/include/bits/swi.h:

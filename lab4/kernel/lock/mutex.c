@@ -19,6 +19,7 @@
 #include <arm/exception.h>
 #include <exports.h>
 
+
 #ifdef DEBUG_MUTEX
 #include <exports.h> // temp
 #endif
@@ -82,14 +83,7 @@ int mutex_lock(int m)
 		// set holding TCB as highest priority task (0th TCB)
 		holdingTcb->cur_prio = 0;
 		runqueue_add(holdingTcb, 0);
-		tcb_t** system_tcb = get_system_tcb();
-		(*system_tcb)[0].native_prio = holdingTcb->native_prio;
-		(*system_tcb)[0].cur_prio = holdingTcb->cur_prio;
-		(*system_tcb)[0].context = holdingTcb->context;
-		(*system_tcb)[0].holds_lock = holdingTcb->holds_lock;
-		(*system_tcb)[0].sleep_queue = holdingTcb->sleep_queue;
-		(*system_tcb)[0].kstack = holdingTcb->kstack;
-		(*system_tcb)[0].kstack_high = holdingTcb->kstack_high;
+		set_king(holdingTcb);
 		dispatch_save();
 
 		mutex->pHolding_Tcb = currTCB;

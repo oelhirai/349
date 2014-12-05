@@ -96,7 +96,3 @@ void allocate_tasks(task_t** tasks  __attribute__((unused)), size_t num_tasks  _
 	//printf("%d/n", highest_prio());
 	dispatch_nosave();
 }
-
-tcb_t** get_system_tcb() {
-	return (tcb_t**) &system_tcb;
-}

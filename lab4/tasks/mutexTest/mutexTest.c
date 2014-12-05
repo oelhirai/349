@@ -27,8 +27,9 @@ void fun1(void* str)
 		putchar((int)str);
 		mutex_lock(mutex);
 		globes = 1;
+		
+		sleep(1000);
 		printf("%d \n", globes);
-		sleep(1010);
 		mutex_unlock(mutex);
 		if (event_wait(0) < 0)
 			panic("Dev 0 failed");

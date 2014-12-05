@@ -35,6 +35,8 @@ void runqueue_add(tcb_t* tcb, uint8_t prio);
 tcb_t* runqueue_remove(uint8_t prio);
 uint8_t highest_prio(void);
 
-tcb_t** get_system_tcb();
+tcb_t* get_king();
+void set_king(tcb_t* curr);
+
 
 #endif /* SCHED_H */
