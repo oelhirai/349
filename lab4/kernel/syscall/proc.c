@@ -88,8 +88,12 @@ int event_wait_syscall(unsigned int dev)
 	}
 	dev_wait(dev);
 	// Add stuff to start next task
-	if((get_king() != NULL))
-		runqueue_remove(get_king()->native_prio);
+	if((get_king() != NULL)){
+		printf("here yo");
+		uint32_t prio_to_remove = get_king()->native_prio;
+		set_king(NULL);
+		runqueue_remove(prio_to_remove);
+	}
 	set_king(NULL);
 	dispatch_sleep();
 	return 0;

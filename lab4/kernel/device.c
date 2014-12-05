@@ -103,7 +103,7 @@ void dev_update(unsigned long millis)
 			{
 				j = 1;
 				//printf("adding task to runqueue %d\n", i);
-				runqueue_add(task, task->cur_prio);
+				runqueue_add(task, task->native_prio);
 				//printf("2 \n");
 				task = task->sleep_queue;
 				//printf("3 \n");
