@@ -1,9 +1,8 @@
- \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/memcheck.o:  \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/memcheck.c \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/kernel.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/types.h
+/home/shashwat/Desktop/349/349/lab4/kernel/memcheck.o:  \
+ /home/shashwat/Desktop/349/349/lab4/kernel/memcheck.c \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/kernel.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/types.h
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/kernel.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/kernel.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/types.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/types.h:
