@@ -77,7 +77,14 @@ int mutex_lock(int m)
 	// switch to highest priority task
 	else
 	{
-		tcb_t* next = mutex->pSleep_queue;
+		tcb_t* holdingTcb = mutex->pHolding_Tcb;
+		holdingTcb->cur_prio = 0;
+		dispatch_sleep();
+		mutex->pHolding_Tcb = currTCB;
+		holdingTcb->cur_prio = holdingTcb->native_prio;
+		holdingTcb->holds_lock = 0;
+		currTCB->holds_lock = 1;
+		/*tcb_t* next = mutex->pSleep_queue;
 		if(next == (tcb_t*) NULL)
 		{
 			// first task to enter sleep queue
@@ -93,7 +100,7 @@ int mutex_lock(int m)
 			next->sleep_queue = currTCB;
 		}
 		currTCB->sleep_queue = NULL;
-		dispatch_sleep();
+		dispatch_sleep();*/
 	}
 	return 0; 
 }
