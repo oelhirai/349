@@ -13,12 +13,12 @@
 #include <exports.h>
 #endif
 
-unsigned long[64] hardcodedValues = [ 1000 ,  828 ,  779 ,  756 ,  743 ,  734 ,  728 ,  724 ,  720 ,  717 ,  715 ,
+unsigned long hardcodedValues[64] ={1000 ,  828 ,  779 ,  756 ,  743 ,  734 ,  728 ,  724 ,  720 ,  717 ,  715 ,
 							  713 ,  711 ,  710 ,  709 ,  708 ,  707 ,  706 ,  705 ,  705 ,  704 ,  704 , 
 							   703 ,  703 ,  702 ,  702 ,  702 ,  701 ,  701 ,  701 ,  700 ,  700 ,  700 , 
 							    700 ,  700 ,  699 ,  699 ,  699 ,  699 ,  699 ,  699 ,  698 ,  698 ,  698 ,
 							      698 ,  698 ,  698 ,  698 ,  698 ,  697 ,  697 ,  697 ,  697 ,  697 ,  697 , 
-							       697 ,  697 ,  697 ,  697 ,  697 ,  697 ,  697 ,  696 ,  696];
+							       697 ,  697 ,  697 ,  697 ,  697 ,  697 ,  697 ,  696 ,  696};
  
 /**
  * @brief Perform UB Test and reorder the task list.
@@ -39,7 +39,7 @@ int assign_schedule(task_t** tasks  , size_t num_tasks)
 	size_t i, j;
 	for(i = 0; i < num_tasks; i ++)
 	{
-		sortedTasks[i] = &(tasks[i]);
+		sortedTasks[i] = (task_t *) &(tasks[i]);
 	}
 	for(i = 0; i < num_tasks; i++)
 	{

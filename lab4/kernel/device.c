@@ -68,7 +68,7 @@ int dev_wait(unsigned int dev)
 	//printf("dev_wait hit %d \n", dev);
 	tcb_t* currTcb = get_cur_tcb();
 	if(currTcb->holds_lock == 1)
-		return EHOLDSLOCK
+		return EHOLDSLOCK;
 	dev_t* device = &(devices[dev]);
 	tcb_t* prev = device->sleep_queue;
 	device->sleep_queue = currTcb;
