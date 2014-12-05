@@ -78,11 +78,16 @@ int mutex_lock(int m)
 	else
 	{
 		tcb_t* holdingTcb = mutex->pHolding_Tcb;
+
+		// set holding TCB as highest priority task (0th TCB)
 		holdingTcb->cur_prio = 0;
-		dispatch_sleep();
+		runqueue_add(holdingTcb, 0);
+		tcb_t** system_tcb = get_system_tcb();
+		system_tcb[0] = holdingTcb;
+		dispatch_save();
+
 		mutex->pHolding_Tcb = currTCB;
 		holdingTcb->cur_prio = holdingTcb->native_prio;
-		holdingTcb->holds_lock = 0;
 		currTCB->holds_lock = 1;
 		/*tcb_t* next = mutex->pSleep_queue;
 		if(next == (tcb_t*) NULL)
@@ -119,6 +124,9 @@ int mutex_unlock(int m)
 		return EPERM;
 
 	currTCB->holds_lock = 0;
+
+	// restore to native priority
+	currTCB->cur_prio = currTCB->native_prio;
 
 	if(mutex->pSleep_queue == NULL)
 	{

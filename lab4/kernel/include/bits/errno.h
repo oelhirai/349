@@ -38,7 +38,7 @@
 #define EDOM          33    /* Math argument out of domain of func */
 #define ERANGE        34    /* Math result not representable */
 #define EDEADLOCK     58    /* File locking deadlock error */
-#define EHOLDSLOCK     60	/* Task calls dev_wait while holding a lock */
+#define EHOLDSLOCK    60	/* Task calls dev_wait while holding a lock */
 
 #define ESCHED       100    /* Unable to schedule */
 
