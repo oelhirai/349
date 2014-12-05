@@ -16,6 +16,7 @@
 #include <arm/reg.h>
 #include <arm/psr.h>
 #include <arm/exception.h>
+#include <bits/errno.h>
 
 #define NULL ((void *) 0)
 /**
@@ -62,14 +63,17 @@ void dev_init(void)
  *
  * @param dev  Device number.
  */
-void dev_wait(unsigned int dev)
+int dev_wait(unsigned int dev)
 {
 	//printf("dev_wait hit %d \n", dev);
+	tcb_t* currTcb = get_cur_tcb();
+	if(currTcb->holds_lock == 1)
+		return EHOLDSLOCK
 	dev_t* device = &(devices[dev]);
 	tcb_t* prev = device->sleep_queue;
-	tcb_t* currTcb = get_cur_tcb();
 	device->sleep_queue = currTcb;
 	currTcb->sleep_queue = prev;
+	return 1;
 	//if(device.sleep_queue == NULL)
 		//printf("null. Lol tyou suck \n");
 }

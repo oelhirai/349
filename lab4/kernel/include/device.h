@@ -18,7 +18,7 @@
 extern const unsigned long dev_freq[NUM_DEVICES];
 
 void dev_init(void);
-void dev_wait(unsigned int dev);
+int dev_wait(unsigned int dev);
 void dev_update(unsigned long num_millis);
 
 #endif /* _DEVICE_H_ */
