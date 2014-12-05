@@ -1,9 +1,8 @@
- \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/sched/ctx_switch_asm.o:  \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/sched/ctx_switch_asm.S \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/asm.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/arm/psr.h
+/home/shashwat/Desktop/349/349/lab4/kernel/sched/ctx_switch_asm.o:  \
+ /home/shashwat/Desktop/349/349/lab4/kernel/sched/ctx_switch_asm.S \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/asm.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/arm/psr.h
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/asm.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/asm.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/arm/psr.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/arm/psr.h:

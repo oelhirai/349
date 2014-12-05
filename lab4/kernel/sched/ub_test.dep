@@ -1,15 +1,14 @@
- \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/sched/ub_test.o:  \
- /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/sched/ub_test.c \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/sched.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/task.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/types.h \
-  /home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/config.h
+/home/shashwat/Desktop/349/349/lab4/kernel/sched/ub_test.o:  \
+ /home/shashwat/Desktop/349/349/lab4/kernel/sched/ub_test.c \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/sched.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/task.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/types.h \
+  /home/shashwat/Desktop/349/349/lab4/kernel/include/config.h
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/sched.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/sched.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/task.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/task.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/types.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/types.h:
 
-/home/omer/Dropbox/CMU-349/Classes/F14/18-349/lab3_4/349/lab4/kernel/include/config.h:
+/home/shashwat/Desktop/349/349/lab4/kernel/include/config.h:
