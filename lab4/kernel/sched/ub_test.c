@@ -33,13 +33,13 @@ unsigned long hardcodedValues[64] ={1000 ,  828 ,  779 ,  756 ,  743 ,  734 ,  7
  * @return 0  The test failed.
  * @return 1  Test succeeded.  The tasks are now in order.
  */
-int assign_schedule(task_t** tasks  , size_t num_tasks)
+int assign_schedule(task_t* tasks  , size_t num_tasks)
 {
 	task_t* sortedTasks[num_tasks];
 	size_t i, j;
 	for(i = 0; i < num_tasks; i ++)
 	{
-		sortedTasks[i] = (task_t *) &(tasks[i]);
+		sortedTasks[i] = &(tasks[i]);
 	}
 	for(i = 0; i < num_tasks; i++)
 	{

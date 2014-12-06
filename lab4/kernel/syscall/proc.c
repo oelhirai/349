@@ -57,7 +57,9 @@ int task_create_syscall(task_t* tasks , size_t num_tasks)
 	if (num_tasks > OS_AVAIL_TASKS) {
 		return EINVAL;
 	} else if (check_mem((char *) tasks, (int) num_tasks, SDRAM_START, SDRAM_END) == FALSE) {
-		return EFAULT;
+		return EFAULT; 
+	} else if (assign_schedule(tasks, num_tasks) == 0) {
+		return ESCHED;
 	}
 	task_t* sortedTasks[num_tasks];
 	size_t i, j;

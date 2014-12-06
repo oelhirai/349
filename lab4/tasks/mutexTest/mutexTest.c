@@ -98,39 +98,48 @@ int main(int argc, char** argv)
 	tasks[0].lambda = fun1;
 	tasks[0].data = (void*)'@';
 	tasks[0].stack_pos = (void*)0xa2000000;
-	tasks[0].C = 1;
-	tasks[0].T = PERIOD_DEV1;
+	tasks[0].C = 20;
+	tasks[0].B = 20;
+	tasks[0].T = PERIOD_DEV0;
 
 	tasks[1].lambda = fun2;
 	tasks[1].data = (void*)'<';
 	tasks[1].stack_pos = (void*)0xa1000000;
-	tasks[1].C = 1;
+	tasks[1].C = 10;
+	tasks[1].B = 10;
 	tasks[1].T = PERIOD_DEV0;
 
 	tasks[2].lambda = fun3;
 	tasks[2].data = (void*)'<';
 	tasks[2].stack_pos = (void*)0xa1001000;
-	tasks[2].C = 1;
+	tasks[2].C = 5;
+	tasks[2].B = 5;
 	tasks[2].T = PERIOD_DEV0;
 
 	tasks[3].lambda = fun4;
 	tasks[3].data = (void*)'<';
 	tasks[3].stack_pos = (void*)0xa1002000;
-	tasks[3].C = 1;
+	tasks[3].C = 20;
+	tasks[3].B = 20;
 	tasks[3].T = PERIOD_DEV0;
 
 	tasks[4].lambda = fun5;
 	tasks[4].data = (void*)'<';
 	tasks[4].stack_pos = (void*)0xa1003000;
-	tasks[4].C = 1;
-	tasks[4].T = PERIOD_DEV0;
+	tasks[4].C = 5;
+	tasks[4].B = 5;
+	tasks[4].T = PERIOD_DEV1;
 
 	mutex = (int) mutex_create();
 	task_create(tasks, 5);
 
+	/*printf("Unschedulable! Redo");
+	tasks[4].B = 10;
+	task_create(tasks, 5);*/
+
 	argc=argc; /* remove compiler warning */
 	argv[0]=argv[0]; /* remove compiler warning */
-
-	puts("Why did your code get here!\n");
+	printf("This didnt work");
+	while(1);
 	return 0;
 }
