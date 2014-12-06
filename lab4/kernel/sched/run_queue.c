@@ -97,6 +97,7 @@ void runqueue_add(tcb_t* tcb  __attribute__((unused)), uint8_t prio)
 tcb_t* runqueue_remove(uint8_t prio)
 {
 	if(king == NULL){
+		//printf("priority is %d \n", prio);
 		uint8_t group_prio = (prio >> 3);
 		uint8_t position_prio = (prio & 0x07);
 		run_bits[group_prio] &= ~(1 << position_prio);

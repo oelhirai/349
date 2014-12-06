@@ -31,7 +31,7 @@ void fun1(void* str)
 		sleep(1000);
 		printf("%d \n", globes);
 		mutex_unlock(mutex);
-		if (event_wait(0) < 0)
+		if (event_wait(1) < 0)
 			panic("Dev 0 failed");
 	}
 }
@@ -45,7 +45,7 @@ void fun2(void* str)
 		globes = 2;
 		printf("%d \n", globes);
 		mutex_unlock(mutex);
-		if (event_wait(1) < 0)
+		if (event_wait(0) < 0)
 			panic("Dev 1 failed");
 	}
 }
@@ -59,7 +59,7 @@ void fun3(void* str)
 		globes = 3;
 		printf("%d \n", globes);
 		mutex_unlock(mutex);
-		if (event_wait(1) < 0)
+		if (event_wait(0) < 0)
 			panic("Dev 1 failed");
 	}
 }
@@ -73,7 +73,7 @@ void fun4(void* str)
 		globes = 4;
 		printf("%d \n", globes);
 		mutex_unlock(mutex);
-		if (event_wait(1) < 0)
+		if (event_wait(0) < 0)
 			panic("Dev 1 failed");
 	}
 }
@@ -87,7 +87,7 @@ void fun5(void* str)
 		globes = 5;
 		printf("%d \n", globes);
 		mutex_unlock(mutex);
-		if (event_wait(1) < 0)
+		if (event_wait(0) < 0)
 			panic("Dev 1 failed");
 	}
 }

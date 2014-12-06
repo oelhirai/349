@@ -126,7 +126,7 @@ int mutex_unlock(int m)
 	currTCB->holds_lock = 0;
 
 	// restore to native priority
-	currTCB->cur_prio = currTCB->native_prio;
+	//currTCB->cur_prio = currTCB->native_prio;
 
 	if(mutex->pSleep_queue == NULL)
 	{
